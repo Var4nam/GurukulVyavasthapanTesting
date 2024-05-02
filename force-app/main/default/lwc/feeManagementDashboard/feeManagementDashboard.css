@@ -1,0 +1,32 @@
+.table_head th {
+    background-color: #36c;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+table, td {
+	text-align: center;
+	font-size: 15px;
+	padding: 5px;
+	margin: 5px;
+}
+
+tr:nth-child(even) {
+  background-color: #eee;
+}
+
+.white-utility-icon {
+        --sds-c-icon-color-foreground-default: #fff;
+}
+
+.exampleHolder{
+    position: relative;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
+
+.align-button {
+    margin: 3%;
+}

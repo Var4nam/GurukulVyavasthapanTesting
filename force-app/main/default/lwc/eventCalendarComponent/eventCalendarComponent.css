@@ -1,0 +1,114 @@
+/* .date-combobox {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    padding-top: 5px;
+}
+
+.date-combobox select {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100px;
+    height: 34px; 
+    box-sizing: border-box;
+}
+
+.years{
+	float: right;
+}
+
+.holidays{
+    font-weight: 400;
+    color: #a3b2c7;
+}
+
+.customStyle{
+    height: 235px;
+    background-color: white;
+}
+
+.holiday-date{
+    font-size: 18px;
+    line-height: 24px;
+    color: #7f8fa4;
+    font-weight: 600;
+} */
+
+
+.red-utility-icon {
+        --sds-c-icon-color-foreground-default: #fff;
+}
+
+.calendar {
+    font-family: Audrey;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1b96ff;
+    padding: 10px;
+}
+
+.calendar-month{
+    font-size: 30px;
+}
+
+.calendar-body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    padding: 10px;
+}
+
+.day {
+    padding: 30px;
+    border: 1px solid #ccc;
+    background-color: white;
+}
+
+.day-name {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.day.empty {
+    background-color: #f5f5f5;
+}
+
+.day-weekend {
+    padding: 30px;
+    border: 1px solid #ccc;
+    color: red;
+}
+
+.day-holiday {
+    padding: 30px;
+    border: 1px solid #ccc;
+    color: green;
+}
+
+.next-button:hover{
+    color: white;
+}
+
+.calendar {
+    font-family: Arial, sans-serif;
+}
+
+.calendar-header {
+    text-align: center;
+    color: #fff;
+    padding: 8px;
+}
+
+.calendar-body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    padding: 10px;
+}

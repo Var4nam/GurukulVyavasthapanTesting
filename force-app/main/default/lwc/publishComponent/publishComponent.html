@@ -1,0 +1,53 @@
+<template>
+    <lightning-card>
+        <div class="slds-box">
+            <table style="margin: 5px">
+                <thead>
+                    <tr class="table_head">
+                        <th> S.N. </th>
+                        <th> Class </th>
+                        <th> First test </th>
+                        <th> Second test </th>
+                        <th> Third test </th>
+                        <th> Half Yearly </th>
+                        <th> Final </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={publishRecords} for:item="pub" for:index="index">
+                        <tr key={pub.Id}>
+                            <td>{serialNumber}</td>
+                            <td><span>{pub.Class__c}</span></td>
+                            <td><lightning-input type="checkbox" checked={pub.First_Test__c} data-index={index} data-id={pub.Id} data-name={pub.Class__c} onchange={handleFirstTestChange}></lightning-input></td>
+                            <td><lightning-input type="checkbox" checked={pub.Second_Test__c} data-index={index} data-id={pub.Id} data-name={pub.Class__c} onchange={handleSecondTestChange}></lightning-input></td>
+                            <td><lightning-input type="checkbox" checked={pub.Third_Test__c} data-index={index} data-id={pub.Id} data-name={pub.Class__c} onchange={handleThirdTestChange}></lightning-input></td>
+                            <td><lightning-input type="checkbox" checked={pub.Half_Yearly__c} data-index={index} data-id={pub.Id} data-name={pub.Class__c} onchange={handleHalfYearlyChange}></lightning-input></td>
+                            <td><lightning-input type="checkbox" checked={pub.Final__c} data-index={index} data-id={pub.Id} data-name={pub.Class__c} onchange={handleFinalChange}></lightning-input></td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+
+		<template if:true={showPublishModal}>
+			<section role="dialog" tabindex="-1" aria-modal="true"
+				aria-label="Meaningful description of the modal content" class="slds-modal slds-fade-in-open">
+				<div class="slds-modal__container">
+					<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+						<lightning-icon icon-name="utility:close" class='white-utility-icon' size="small" onclick={closeModal}></lightning-icon>
+						<span class="slds-assistive-text">Cancel and close</span>
+					</button>
+					<div class="slds-modal__content slds-p-around_medium slds-modal__content_headless "
+						id="modal-content-id-1">
+						<p class="slds-align_absolute-center">Do you want to publish Results ?</p>
+					</div>
+					<div class="slds-modal__footer">
+						<button class="slds-button slds-button_neutral" aria-label="Cancel and close" onclick={closeModal}>Cancel</button>
+						<button class="slds-button slds-button_brand" onclick={publishClick}>Publish</button>
+					</div>
+				</div>
+			</section>
+			<div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+		</template>
+    </lightning-card>
+</template>

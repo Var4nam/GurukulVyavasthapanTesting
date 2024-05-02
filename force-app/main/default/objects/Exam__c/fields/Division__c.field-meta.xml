@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Division__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(Percentage__c &lt; 33, &apos;Fail&apos;,
+   IF(Percentage__c &lt; 45, &apos;Third Division&apos;,
+      IF(Percentage__c &lt; 60, &apos;Second Division&apos;, &apos;First Division&apos;)
+   )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Division</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

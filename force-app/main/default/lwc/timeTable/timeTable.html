@@ -1,0 +1,117 @@
+<template>
+	<lightning-card>
+		<lightning-layout multiple-rows>
+			<lightning-layout-item size="12" padding="around-small" small-device-size="3" medium-device-size="6"
+				large-device-size="4">
+				<div style="padding-top:5%">
+					<lightning-record-edit-form object-api-name="Attendance__c">
+						<lightning-input-field field-name="Class__c" variant="label-hidden" placeholder="Select Class"
+							value={classValue} onchange={handleClassChange}>
+						</lightning-input-field>
+					</lightning-record-edit-form>
+				</div>
+			</lightning-layout-item>
+			<lightning-layout-item size="12" padding="around-small" small-device-size="3" medium-device-size="6"
+				large-device-size="3">
+				<div style="padding-top:6%">
+					<lightning-button variant="brand-outline" label="Go" onclick={handleGetRecordsClick}>
+					</lightning-button>
+				</div>
+			</lightning-layout-item>
+		</lightning-layout>
+
+		<template if:true={showTimeTable}>
+			<table class="parentTableClass">
+				<thead>
+					<tr class="bgColor parentTableClass">
+						<th class="parentTableClass">Weekdays</th>
+						<template for:each={sortedTimeList} for:item="time">
+							<th key={time} class="parentTableClass">{time}</th>
+						</template>
+					</tr>
+				</thead>
+				<tbody>
+					<template for:each={timeTableData} for:item="timeTableObj">
+						<tr key={timeTableObj.day} class="parentTableClass">
+							<th class="parentTableClass">{timeTableObj.day1}</th>
+							<template for:each={timeTableObj.day} for:item="time">
+								<th key={time} class="parentTableClass">
+									<template if:false={time.Teacher__c}>
+										<template if:true={time.blank}>
+											/
+										</template>
+										<template if:false={time.blank}>
+											<lightning-icon data-id={time.Id} class="iconClass" icon-name="utility:edit"
+												size="small" onclick={handleTeacherDeatils}>
+											</lightning-icon>
+										</template>
+									</template>
+									<template if:true={time.Teacher__c}>
+										<template if:true={time.blank}>
+											/
+										</template>
+										<template if:false={time.blank}>
+											<table class="tableClass">
+												<tr class="tableClass">
+													<th>
+														<template if:true={time.Teacher__c}>
+															T - {time.Teacher__r.Name}
+														</template>
+													</th>
+												</tr>
+												<tr class="tableClass">
+													<th>
+														<template if:true={time.Subject__c}>
+															S - {time.Subject__r.Name}
+														</template>
+													</th>
+													<th>
+														<lightning-icon data-id={time.Id}
+															class="iconClass slds-m-right_large"
+															icon-name="utility:edit" size="x-small"
+															onclick={handleTeacherDeatils}>
+														</lightning-icon>
+													</th>
+												</tr>
+											</table>
+										</template>
+									</template>
+								</th>
+							</template>
+						</tr>
+					</template>
+				</tbody>
+			</table>
+		</template>
+	</lightning-card>
+	<template if:true={isShowModal}>
+		<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+			aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+			<div class="slds-modal__container">
+				<header class="slds-modal__header">
+					<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBox}>
+                <lightning-icon icon-name="utility:close"
+                   alternative-text="close"
+                   variant="inverse"
+                   size="small" ></lightning-icon>
+                <span class="slds-assistive-text">Close</span>
+             </button>
+					<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Create Time Table</h2>
+				</header>
+				<lightning-record-edit-form id="recordViewForm" record-id={recordId} object-api-name="TimeTable__c"
+					onsuccess={handleTimetableRecord}>
+					<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+						<lightning-messages>test</lightning-messages>
+						<lightning-input-field field-name="Teacher__c" onchange={getTeacherValue}></lightning-input-field>
+						<lightning-input-field field-name="Subject__c" onchange={getSubjectValue}></lightning-input-field>
+					</div>
+					<footer class="slds-modal__footer slds-modal__footer_center">
+						<button class="slds-button slds-button_brand" type="submit" onclick={handleSaveClick}>Save</button>
+						<button class="slds-button slds-button_neutral" onclick={hideModalBox}>Cancel</button>
+					</footer>
+				</lightning-record-edit-form>
+			</div>
+		</section>
+		<div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+
+	</template>

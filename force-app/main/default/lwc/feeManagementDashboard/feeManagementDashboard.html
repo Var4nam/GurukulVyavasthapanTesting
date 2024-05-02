@@ -1,0 +1,139 @@
+<template>
+
+	<lightning-card>
+		<div class="table">
+			<lightning-layout multiple-rows>
+				<lightning-layout-item size="12" padding="around-small" small-device-size="3" medium-device-size="6"
+					large-device-size="3">
+					<lightning-record-edit-form object-api-name="Assign_Classes__c">
+						<lightning-input-field field-name="Class__c" variant="label-hidden"
+							placeholder="Search class..." onchange={handleClassChange}>
+						</lightning-input-field>
+					</lightning-record-edit-form>
+				</lightning-layout-item>
+				<lightning-layout-item size="12" padding="around-small" small-device-size="3" medium-device-size="6"
+					large-device-size="3">
+					<lightning-button variant="brand" label="Go" onclick={handleGoClick}></lightning-button>
+				</lightning-layout-item>
+			</lightning-layout>
+
+			<template if:true={waitForASection}>
+				<div>
+					<lightning-spinner class="slds-align_absolute-center" alternative-text="Loading" size="x-small"></lightning-spinner>
+				</div>
+			</template>
+
+			<template if:true={showFeeList}>
+				<lightning-layout multiple-rows>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="12"
+						large-device-size="12">
+						<div class="slds-box">
+							<table style="margin: 5px">
+								<thead>
+									<tr class="table_head">
+										<th>S.N.</th>
+										<th>Name</th>
+										<th>Student Name</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<template for:each={feeList} for:item="fee" for:index="index">
+										<tr key={fee.Id}>
+											<td>{serialNumber}</td>
+											<td>{fee.Student__r.Roll_Number__c}</td>
+											<td>{fee.Student__r.Name}</td>
+											<td>
+												<lightning-button variant="brand" label="Submit Fee" data-id={fee.Id}
+													onclick={handleSubmitFeeClick}>
+												</lightning-button>
+												&nbsp;
+												<lightning-button variant="success" label="Show Fee"
+													onclick={handleShowFeeClick}>
+												</lightning-button>
+											</td>
+										</tr>
+									</template>
+								</tbody>
+							</table>
+						</div>
+					</lightning-layout-item>
+				</lightning-layout>
+			</template>
+
+			<template if:true={showCreateModal}>
+				<div class="modal">
+					<lightning-modal-body>
+						<lightning-record-edit-form object-api-name="Fee_Management__c" record-id={feeId} onsuccess={handleSuccess}>
+							<lightning-layout multiple-rows>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+									large-device-size="6">
+									<lightning-input-field field-name="Amount__c"></lightning-input-field>
+								</lightning-layout-item>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+									large-device-size="6">
+									<lightning-input-field field-name="Due_Amount__c"></lightning-input-field>
+								</lightning-layout-item>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+									large-device-size="6">
+									<lightning-input-field field-name="Due_Date__c"></lightning-input-field>
+								</lightning-layout-item>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+									large-device-size="6">
+									<lightning-input-field field-name="Duration__c"></lightning-input-field>
+								</lightning-layout-item>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+									large-device-size="6">
+									<lightning-input-field field-name="Fee_Type__c"></lightning-input-field>
+								</lightning-layout-item>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+									large-device-size="6">
+									<lightning-input-field field-name="Paid_Amount__c"></lightning-input-field>
+								</lightning-layout-item>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+									large-device-size="6">
+									<lightning-input-field field-name="Examination_Fee__c"></lightning-input-field>
+								</lightning-layout-item>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+									large-device-size="6">
+									<lightning-input-field field-name="Tution_Fee__c"></lightning-input-field>
+								</lightning-layout-item>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+									large-device-size="6">
+									<lightning-input-field field-name="Extra_Activity_Fee__c"></lightning-input-field>
+								</lightning-layout-item>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+									large-device-size="6">
+									<lightning-input-field field-name="Admission_Fee__c"></lightning-input-field>
+								</lightning-layout-item>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+									large-device-size="6">
+									<lightning-input-field field-name="Date__c"></lightning-input-field>
+								</lightning-layout-item>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+									large-device-size="6">
+									<lightning-input-field field-name="Payment_Status__c"></lightning-input-field>
+								</lightning-layout-item>
+							</lightning-layout>
+							<div class="slds-p-top_xx-small buttons ">
+								<div class="slds-align_absolute-center">
+									<lightning-button variant="brand-outline" label="Cancel" onclick={handleCancelClick}>
+									</lightning-button>
+									<lightning-button class="slds-p-left_xx-small" variant="brand" label="Save" type="submit" onclick={handleSaveClick}> </lightning-button>
+								</div>
+							</div>
+						</lightning-record-edit-form>
+					</lightning-modal-body>
+				</div>
+			</template>
+
+			<template if:true={showFeeManagementTableEmpty}>
+				<lightning-card>
+					<div style="height:22rem">
+						<span class="slds-align_absolute-center" style="color:red">No records found!</span>
+					</div>
+				</lightning-card>
+			</template>
+		</div>
+	</lightning-card>
+</template>

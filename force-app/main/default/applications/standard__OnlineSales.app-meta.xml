@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <label>Online Sales</label>
+    <navType>Standard</navType>
+    <tabs>standard-OnlineSalesHome</tabs>
+    <tabs>Expense_Management__c</tabs>
+    <tabs>Student__c</tabs>
+    <tabs>Fee_Management__c</tabs>
+    <tabs>Parent_Guardian__c</tabs>
+    <tabs>Event_Management__c</tabs>
+    <tabs>Class__c</tabs>
+    <tabs>Grades_Report_Card__c</tabs>
+    <tabs>Teacher__c</tabs>
+    <tabs>Attendance__c</tabs>
+    <tabs>Event_Calendar__c</tabs>
+    <tabs>Result__c</tabs>
+    <tabs>Announcement__c</tabs>
+    <tabs>Assign_Classes__c</tabs>
+    <tabs>Subject__c</tabs>
+    <tabs>Holiday__c</tabs>
+    <tabs>Leave__c</tabs>
+    <tabs>TimeTable__c</tabs>
+    <tabs>Admin__c</tabs>
+    <tabs>Exam__c</tabs>
+    <tabs>Paper__c</tabs>
+    <tabs>Publish__c</tabs>
+    <uiType>Lightning</uiType>
+</CustomApplication>

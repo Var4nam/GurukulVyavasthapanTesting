@@ -1,0 +1,13 @@
+.navigationStyle{
+	background-color: white;
+}
+.text{
+	-webkit-text-fill-color: white;
+}
+
+.haddingStyle{
+	font-size: 20px;
+}
+.navigation{
+	width: 300px;
+}

@@ -1,0 +1,26 @@
+<template>
+	<div class="modal">
+		<lightning-modal-body>
+			<lightning-record-view-form object-api-name="Staff__c" record-id={staffId}>
+				<lightning-layout multiple-rows>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+						large-device-size="6">
+						<lightning-output-field field-name="Name"></lightning-output-field>
+					</lightning-layout-item>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+						large-device-size="6">
+						<lightning-output-field field-name="Staff_Type__c"></lightning-output-field>
+					</lightning-layout-item>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+						large-device-size="6">
+						<lightning-output-field field-name="Gender"></lightning-output-field>
+					</lightning-layout-item>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+						large-device-size="6">
+						<lightning-output-field field-name="IsActive__c"></lightning-output-field>
+					</lightning-layout-item>
+				</lightning-layout>
+			</lightning-record-view-form>
+		</lightning-modal-body>
+	</div>
+</template>

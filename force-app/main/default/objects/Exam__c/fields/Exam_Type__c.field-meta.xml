@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Exam_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Exam Type&apos;</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>First Test</fullName>
+                <default>false</default>
+                <label>First Test</label>
+            </value>
+            <value>
+                <fullName>Second Test</fullName>
+                <default>false</default>
+                <label>Second Test</label>
+            </value>
+            <value>
+                <fullName>Third Test</fullName>
+                <default>false</default>
+                <label>Third Test</label>
+            </value>
+            <value>
+                <fullName>Half Yearly Exam</fullName>
+                <default>false</default>
+                <label>Half Yearly Exam</label>
+            </value>
+            <value>
+                <fullName>Yearly Exam</fullName>
+                <default>false</default>
+                <label>Yearly Exam</label>
+            </value>
+            <value>
+                <fullName>Forth Test</fullName>
+                <default>false</default>
+                <label>Forth Test</label>
+            </value>
+            <value>
+                <fullName>Fifth Test</fullName>
+                <default>false</default>
+                <label>Fifth Test</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

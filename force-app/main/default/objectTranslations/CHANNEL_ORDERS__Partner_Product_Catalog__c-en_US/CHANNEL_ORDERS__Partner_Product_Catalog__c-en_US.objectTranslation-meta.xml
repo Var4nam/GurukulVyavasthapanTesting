@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <layouts>
+        <layout>Partner Product Catalog Layout</layout>
+        <sections>
+            <label></label>
+            <section>Pricing Configuration</section>
+        </sections>
+        <sections>
+            <label></label>
+            <section>Product Info</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>CHANNEL_ORDERS__Fixed_Price_is_required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>CHANNEL_ORDERS__Fixed_Price_should_be_blank</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>CHANNEL_ORDERS__Floor_price_is_required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>CHANNEL_ORDERS__PNR_percent_is_required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>CHANNEL_ORDERS__PNR_percent_should_be_blank</name>
+    </validationRules>
+</CustomObjectTranslation>

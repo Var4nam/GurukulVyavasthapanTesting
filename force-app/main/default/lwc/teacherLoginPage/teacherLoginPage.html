@@ -1,0 +1,34 @@
+<template>
+	<div class="slds-align_absolute-center">
+		<lightning-layout multiple-rows>
+			<lightning-layout-item size="12" padding="around-small" small-device-size="12" medium-device-size="6"
+				large-device-size="12">
+				<lightning-card>
+					<img src={aiflyLogo} alt="Aifly" class="center">
+					<div class="UsernameStyle">
+						<h2>{showError}</h2>
+						<legend class="slds-form-element__legend">Username</legend>
+						<lightning-input variant="label-hidden" type="text" value={username}
+							onchange={handleUsernameChange}>
+						</lightning-input>
+						<legend class="slds-form-element__legend slds-m-top_x-small">Password</legend>
+						<lightning-input type={inputType} icon-name={eyeIcon} size="x-small" value={password}
+							onchange={handlePasswordChange}>
+						</lightning-input>
+						<lightning-icon class="toggle-password-icon" icon-name={eyeIcon} size="x-small"
+							onclick={togglePasswordVisibility}></lightning-icon>
+						<div class="slds-text-align_right slds-m-top_x-small">
+							<a href="/s/login/ForgotPasswordComponent">Forgot your password?</a>
+						</div>
+						<button type="button" class="buttonStyle" onclick={handleLoginClick}>Log in</button>
+					</div>
+				</lightning-card>
+			</lightning-layout-item>
+		</lightning-layout>
+	</div>
+	<template if:true={showWelcomeMessage}>
+		<div class="slds-text-heading_small textStyle">
+			<h1>WELCOME TO AIFLY TECHNOLOGY</h1>
+		</div>
+	</template>
+</template>

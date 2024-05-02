@@ -1,0 +1,176 @@
+<template>
+	<lightning-card>
+		<div if:true={showLogoutButton} class="buttonStyle slds-m-right_medium">
+			<button class="fancy-button" onclick={handleClick} label="Log Out">Log Out</button>
+		</div>
+		<div>
+			<lightning-layout multiple-rows class="slds-theme_shade">
+				<lightning-layout-item size="12" padding="around-small" medium-device-size="3" large-device-size="2">
+					<div class="header-column">
+						<div>
+							<img style="max-height: 200px; cursor: pointer; margin-top: -50px;" alt="Compnay logo" src={companyLogo} onclick={handleLogoClick}/>
+						</div>
+							<lightning-vertical-navigation selected-item={selectedTab}>
+								<lightning-vertical-navigation-section>
+									<lightning-vertical-navigation-item-icon label="Personal Information"
+										name="reports_personal_information" icon-name="standard:user" onclick={handlePersonalInformationTab}>
+									</lightning-vertical-navigation-item-icon>
+									<lightning-vertical-navigation-item-icon label="Teacher Home"
+										name="reports_home" icon-name="standard:dashboard" onclick={handleHomeTab}>
+									</lightning-vertical-navigation-item-icon>
+									<lightning-vertical-navigation-item-icon label="Announcement"
+										name="reports_announcement" icon-name="standard:dashboard" onclick={handleAnnouncementTab}>
+									</lightning-vertical-navigation-item-icon>
+									<lightning-vertical-navigation-item-icon label="Attendance"
+										name="reports_attendance" icon-name="standard:campaign_members" onclick={handleAttendanceTab}>
+									</lightning-vertical-navigation-item-icon>
+									<lightning-vertical-navigation-item-icon label="Assign Classes"
+										name="reports_assign_classes" icon-name="standard:dashboard" onclick={handleAssignedClassesTab}>
+									</lightning-vertical-navigation-item-icon>
+									<lightning-vertical-navigation-item-icon label="Leave Apply"
+										name="reports_leave_apply" icon-name="standard:campaign_members" onclick={handleLeaveApplyTab}>
+									</lightning-vertical-navigation-item-icon>
+									<lightning-vertical-navigation-item-icon label="Result"
+										name="reports_result" icon-name="standard:campaign_members" onclick={handleResultTab}>
+									</lightning-vertical-navigation-item-icon>
+								</lightning-vertical-navigation-section>
+							</lightning-vertical-navigation>
+						</div>
+				</lightning-layout-item>
+
+
+				
+				<template if:true={showDashboard}>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="6" large-device-size="5">
+						<div class="slds-box">
+							<c-teacher-attendance-page></c-teacher-attendance-page>
+						</div>
+					</lightning-layout-item>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="6" large-device-size="1">
+					</lightning-layout-item>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="6" large-device-size="4">
+						<div class="slds-box">
+							<c-attendance-donut-chart-component portal-name="teacher"></c-attendance-donut-chart-component>
+						</div>
+					</lightning-layout-item>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="6" large-device-size="2">
+					</lightning-layout-item>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="3"
+						large-device-size="3">
+						<div class="slds-box AssignClasses_Box" onclick={handleAssignedClassesTab}>
+							<lightning-layout multiple-rows>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="3"
+									large-device-size="5">
+									<lightning-icon class="icon" icon-name="action:add_contact"
+										alternative-text="Click to Call" size="large" title="large size">
+									</lightning-icon>
+								</lightning-layout-item>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="4"
+									large-device-size="6">
+									<div class="slds-text-align_right box_Lable">
+										Assign Classes
+									</div>
+								</lightning-layout-item>
+							</lightning-layout>
+						</div>
+					</lightning-layout-item>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="3"
+						large-device-size="4">
+						<div class="slds-box LeaveApply_Box" onclick={handleLeaveApplyTab}>
+							<lightning-layout multiple-rows>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="3"
+									large-device-size="5">
+									<lightning-icon class="icon" icon-name="action:new_note"
+										alternative-text="Click to Call" size="large" title="large size">
+									</lightning-icon>
+								</lightning-layout-item>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="4"
+									large-device-size="6">
+									<div class="slds-text-align_right box_Lable">
+										Leave Apply
+									</div>
+								</lightning-layout-item>
+							</lightning-layout>
+						</div>
+					</lightning-layout-item>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="3"
+						large-device-size="3">
+						<div class="slds-box Salary_Box">
+							<lightning-layout multiple-rows>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="3"
+									large-device-size="5">
+									<lightning-icon class="icon" icon-name="action:update"
+										alternative-text="Click to Call" size="large" title="large size">
+									</lightning-icon>
+								</lightning-layout-item>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="4"
+									large-device-size="6">
+									<div class="slds-text-align_right box_Lable">
+										Salary
+									</div>
+								</lightning-layout-item>
+							</lightning-layout>
+						</div>
+					</lightning-layout-item>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="6" large-device-size="2">
+					</lightning-layout-item>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="6" large-device-size="6">
+							<div class="slds-box">
+								<!-- <c-event-calendar-component></c-event-calendar-component> -->
+								<c-calendar></c-calendar>
+							</div>
+					</lightning-layout-item>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="6" large-device-size="4">
+						<div class="slds-box">
+							<c-announcement-dashboard></c-announcement-dashboard>
+						</div>
+					</lightning-layout-item>
+				</template>
+
+
+				<template if:true={showPersonalInformationTab}>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="9"
+						large-device-size="10">
+						<c-teacher-personal-information-component></c-teacher-personal-information-component>
+					</lightning-layout-item>
+				</template>
+				<template if:true={showAnnouncementTab}>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="9"
+						large-device-size="10">
+						<c-announcement-apply-component></c-announcement-apply-component>
+					</lightning-layout-item>
+				</template>
+				<template if:true={showAttendanceTab}>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="9"
+						large-device-size="10">
+						<c-attendance-calendar-component portal-name="teacher"></c-attendance-calendar-component>
+					</lightning-layout-item>
+				</template>
+				<template if:true={showAssignedClassesTab}>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="9"
+						large-device-size="10">
+						<c-attendance-for-student></c-attendance-for-student>
+					</lightning-layout-item>
+				</template>
+				<template if:true={showEventCalendarTab}>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="9"
+						large-device-size="10">
+						<c-event-calendar-component></c-event-calendar-component>
+					</lightning-layout-item>
+				</template>
+				<template if:true={showLeaveApplyTab}>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="9"
+						large-device-size="10">
+						<c-leave-apply-component></c-leave-apply-component>
+					</lightning-layout-item>
+				</template>
+				<template if:true={showResultTab}>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="9"
+						large-device-size="10">
+						<c-result-for-teacher-portal></c-result-for-teacher-portal>
+					</lightning-layout-item>
+				</template>
+			</lightning-layout>
+		</div>
+	</lightning-card>
+</template>

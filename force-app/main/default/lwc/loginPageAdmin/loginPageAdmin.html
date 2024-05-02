@@ -1,0 +1,36 @@
+<template>
+    <div class="modal">
+        <lightning-layout multiple-rows>
+            <lightning-layout-item size="2">
+            </lightning-layout-item>
+            <lightning-layout-item size="2">
+            </lightning-layout-item>
+            <lightning-layout-item size="2">
+            </lightning-layout-item>
+            <lightning-layout-item size="1">
+            </lightning-layout-item>
+            <lightning-layout-item size="4">
+                <lightning-card>
+                     <div class="custom-card-header">
+                        <span class="card-title">Login</span>
+                    </div>
+                    <div class="slds-p-around_medium">
+                        <div class="txt_field">
+                            <lightning-input type="text" name="text" label="Username" onchange={handleUsernameChange}></lightning-input>
+                        </div>
+                        <div class="txt_field">
+                            <lightning-input type="password" name="password" label="Password" onchange={handlePasswordChange}></lightning-input>
+                        </div>
+                        <div class="pass">Forgte Password?</div>
+                        <div class="log-btn">
+                        <lightning-button label="Login" onclick={handleLogin} variant="Brand"></lightning-button>
+                        </div>
+                        <div class="signup_link">
+                            Not a Member? <a href="/signup">Signup</a>
+                        </div>
+                    </div>
+                </lightning-card>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+</template>

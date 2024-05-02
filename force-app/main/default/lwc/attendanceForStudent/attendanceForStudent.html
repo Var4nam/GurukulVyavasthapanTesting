@@ -1,0 +1,80 @@
+<template>
+	<lightning-card>
+        <template if:true={showAssignClassList}>
+			<lightning-layout multiple-rows>
+				<lightning-layout-item size="12" padding="around-small" medium-device-size="12" large-device-size="12">
+					<div class="slds-box">
+						<table style="margin: 5px">
+							<thead>
+								<tr class="table_head">
+									<th>S.N.</th>
+									<th>Class</th>
+									<th>Section</th>
+									<th>Subject</th>
+									<th>Attendance</th>
+								</tr>
+							</thead>
+							<tbody>
+								<template for:each={assignedClasses} for:item="ass" for:index="index">
+									<tr key={ass.Id}>
+										<td>{serialNumber}</td>
+										<td>{ass.Class__r.Name}</td>
+										<td>{ass.Class__r.Section__c}</td>
+										<td>{ass.Subject__r.Name}</td>
+										<td>
+											<lightning-button variant="success" label="Attendance"
+												data-id={ass.Class__r.Id} onclick={handleAttendanceClick}></lightning-button>
+										</td>
+									</tr>
+								</template>
+							</tbody>
+						</table>
+					</div>
+				</lightning-layout-item>
+			</lightning-layout>
+        </template>
+        <template if:true={showStudentList}>
+            <lightning-layout multiple-rows>
+				<lightning-layout-item size="12" padding="around-small" small-device-size="3" medium-device-size="6"
+					large-device-size="2">
+					<lightning-button variant="brand" label="Back" onclick={handleBackClick}></lightning-button>
+				</lightning-layout-item>
+				<lightning-layout-item size="12" padding="around-small" small-device-size="3" medium-device-size="6"
+					large-device-size="8">
+				</lightning-layout-item>
+				<lightning-layout-item size="12" padding="around-small" small-device-size="3" medium-device-size="6"
+					large-device-size="2">
+					<lightning-input type="date" variant="standard" placeholder="Select Date" onchange={handleDateChange} >
+                    </lightning-input>
+				</lightning-layout-item>
+				<lightning-layout-item size="12" padding="around-small" small-device-size="3" medium-device-size="6"
+					large-device-size="12">
+					<div class="slds-box">
+						<table style="margin: 5px">
+							<thead>
+								<tr class="table_head">
+									<th>S.N.</th>
+									<th>Name</th>
+									<th>Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								<template for:each={attendance} for:item="att" for:index="index">
+									<tr key={att.id}>
+										<td>{serialNumber}</td>
+										<td><span>{att.name}</span></td>
+										<td class="slds-align_absolute-center">
+											<lightning-input type="toggle" checked={att.isPresent}
+												onchange={handleToggleClick} message-toggle-active="Present"
+												message-toggle-inactive="Absent" data-index={index} data-id={att.id}> </lightning-input>
+										</td>
+									</tr>
+								</template>
+							</tbody>
+						</table>
+					</div>
+				</lightning-layout-item>
+			</lightning-layout>
+        </template>
+	</lightning-card>
+</template>

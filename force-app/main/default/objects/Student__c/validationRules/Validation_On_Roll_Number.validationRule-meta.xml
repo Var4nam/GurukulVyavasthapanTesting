@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Validation_On_Roll_Number</fullName>
+    <active>true</active>
+    <errorConditionFormula>LEN(  TEXT(Roll_Number__c) ) &lt; 7</errorConditionFormula>
+    <errorDisplayField>Roll_Number__c</errorDisplayField>
+    <errorMessage>Please enter 7 digit Rollnumber.</errorMessage>
+</ValidationRule>

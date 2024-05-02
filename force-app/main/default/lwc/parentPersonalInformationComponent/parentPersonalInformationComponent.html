@@ -1,0 +1,26 @@
+<template>
+	<div class="modal">
+		<lightning-modal-body>
+			<lightning-record-view-form object-api-name="Parent_Guardian__c" record-id={parnetId}>
+				<lightning-layout multiple-rows>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+						large-device-size="6">
+						<lightning-output-field field-name="Name" required></lightning-output-field>
+					</lightning-layout-item>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+						large-device-size="6">
+						<lightning-output-field field-name="Relationship_to_Student__c"></lightning-output-field>
+					</lightning-layout-item>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+						large-device-size="6">
+						<lightning-output-field field-name="Student__c"></lightning-output-field>
+					</lightning-layout-item>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+						large-device-size="6">
+						<lightning-output-field field-name="Contact_Information__c"></lightning-output-field>
+					</lightning-layout-item>
+				</lightning-layout>
+			</lightning-record-view-form>
+		</lightning-modal-body>
+	</div>
+</template>

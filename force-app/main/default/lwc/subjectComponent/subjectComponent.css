@@ -1,0 +1,43 @@
+.back_button {
+    margin-bottom: 5px;
+}
+.file-uploader {
+   margin-left: 4%;
+   margin: 0px auto;
+   width: 300px;
+}
+.error-message {
+   margin-top: 8px;
+   font-size: 12px;
+   color: red;
+}
+.upload-button {
+   margin-top: 16px;
+}
+.datatable-container {
+  width: auto;
+}
+
+.download-link {
+    color: #0070d2;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.download-link:hover {
+    text-decoration: underline; 
+}
+.cardSpinner{
+    position: relative;
+}
+
+.editable-field-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.slds-modal__container {
+    max-width: 80rem !important;
+    width: 80% !important;
+}

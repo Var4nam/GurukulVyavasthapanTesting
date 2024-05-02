@@ -1,0 +1,11 @@
+.back_button{
+    margin-bottom: 5px;
+}
+
+/* CSS to style the text field to resemble a time picker */
+.end-time-cell input[type="text"] {
+    border: none;
+    background: none;
+    cursor: pointer;
+    width: auto;
+}

@@ -1,0 +1,132 @@
+<template>
+	<lightning-card>
+
+		<template if:true={showPaperTypeList}>
+			<lightning-layout multiple-rows>
+				<lightning-layout-item size="12" padding="around-small" small-device-size="3" medium-device-size="6"
+					large-device-size="3">
+					<lightning-combobox options={options} placeholder="Select Paper Type..."
+						onchange={handlePaperTypeChange} value={paperTypeValue}></lightning-combobox>
+				</lightning-layout-item>
+				<template if:false={showExamList}>
+					<lightning-layout-item class="align-button" size="12" small-device-size="3" medium-device-size="6"
+						large-device-size="3">
+						<lightning-button variant="brand-outline" label="Proceed" onclick={handleProceedClick}>
+						</lightning-button>
+					</lightning-layout-item>
+				</template>
+				<template if:true={showExamList}>
+					<lightning-layout-item class="align-button" size="12" small-device-size="3" medium-device-size="6"
+						large-device-size="3">
+						<lightning-button variant="brand" label="Back" onclick={handleBackClick}></lightning-button>
+					</lightning-layout-item>
+				</template>
+			</lightning-layout>
+		</template>
+
+		<template if:true={showAssignClassList}>
+			<lightning-layout multiple-rows>
+				<lightning-layout-item size="12" padding="around-small" medium-device-size="12" large-device-size="12">
+					<div class="slds-box">
+						<table style="margin: 5px">
+							<thead>
+								<tr class="table_head">
+									<th>S.N.</th>
+									<th>Class</th>
+									<th>Section</th>
+									<th>Subject</th>
+									<th>Exam</th>
+								</tr>
+							</thead>
+							<tbody>
+								<template for:each={assignedClasses} for:item="ass" for:index="index">
+									<tr key={ass.Id}>
+										<td>{serialNumber}</td>
+										<td>{ass.Class__r.Name}</td>
+										<td>{ass.Class__r.Section__c}</td>
+										<td>{ass.Subject__r.Name}</td>
+										<td>
+											<lightning-button variant="brand" label="Marks" data-id={ass.Class__r.Id}
+												data-name={ass.Subject__r.Name} onclick={handleMarksClick}>
+											</lightning-button>
+											&nbsp;
+											<lightning-button variant="success" label="Results"
+												data-id={ass.Class__r.Id} onclick={handleResultsClick}>
+											</lightning-button>
+											&nbsp;
+											<lightning-button variant="brand-outline" label="Publish"
+												onclick={handlePublishClick}>
+											</lightning-button>
+										</td>
+									</tr>
+								</template>
+							</tbody>
+						</table>
+					</div>
+				</lightning-layout-item>
+			</lightning-layout>
+		</template>
+
+		<template if:true={showPublishModal}>
+			<section role="dialog" tabindex="-1" aria-modal="true"
+				aria-label="Meaningful description of the modal content" class="slds-modal slds-fade-in-open">
+				<div class="slds-modal__container">
+					<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+						<lightning-icon icon-name="utility:close" class='white-utility-icon' size="small" onclick={closeModal}></lightning-icon>
+						<span class="slds-assistive-text">Cancel and close</span>
+					</button>
+					<div class="slds-modal__content slds-p-around_medium slds-modal__content_headless "
+						id="modal-content-id-1">
+						<p class="slds-align_absolute-center">Do you want to publish Results ?</p>
+					</div>
+					<div class="slds-modal__footer">
+						<button class="slds-button slds-button_neutral" aria-label="Cancel and close" onclick={closeModal}>Cancel</button>
+						<button class="slds-button slds-button_brand">Publish</button>
+					</div>
+				</div>
+			</section>
+			<div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+		</template>
+
+		<template if:true={showExamList}>
+			<lightning-layout multiple-rows>
+				<lightning-layout-item size="12" padding="around-small" small-device-size="3" medium-device-size="6"
+					large-device-size="12">
+					<div class="slds-box">
+						<table style="margin: 5px">
+							<thead>
+								<tr class="table_head">
+									<th>S.N.</th>
+									<th>Student Name</th>
+									<th>Obtain Marks</th>
+									<th>Out of</th>
+								</tr>
+							</thead>
+							<tbody>
+								<template for:each={examList} for:item="exm" for:index="index">
+									<tr key={exm.Id}>
+										<td>{serialNumber}</td>
+										<td><span>{exm.StudentName}</span></td>
+										<td>
+											<lightning-input type="number" placeholder={exm.ObtainMarks}
+												data-index={index} data-name={exm.StudentId} data-id={exm.ClassId}
+												onchange={handleObtainMarksChange}>
+											</lightning-input>
+										</td>
+										<td>
+											<span>{exm.Outof}</span>
+										</td>
+									</tr>
+								</template>
+							</tbody>
+						</table>
+						<div class="slds-p_top-small">
+							<lightning-button class="slds-align_absolute-center" variant="brand" label="Save"
+								onclick={handleSaveClick}></lightning-button>
+						</div>
+					</div>
+				</lightning-layout-item>
+			</lightning-layout>
+		</template>
+	</lightning-card>
+</template>

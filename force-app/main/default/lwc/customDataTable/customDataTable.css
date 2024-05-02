@@ -1,0 +1,17 @@
+.body{
+    color: black;
+}
+
+.lookup-section {
+    position: absolute !important;
+}
+
+.evenRow {
+    background-color: #60D2FF;
+    height: 50px;
+}
+
+.oddRow {
+    background-color: #a4e3fb;
+    height: 50px;
+}

@@ -1,0 +1,12 @@
+.buttondiv{
+	background-color : #faf9f9;
+}
+.bold-cls{
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.slds-modal__container {
+    max-width: 80rem !important;
+    width: 80% !important;
+}

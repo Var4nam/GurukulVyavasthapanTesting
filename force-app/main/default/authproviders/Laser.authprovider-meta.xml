@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
+    <authorizeUrl>https://aiflyofficial--aiflysolu.sandbox.my.salesforce.com/services/oauth2/authorize</authorizeUrl>
+    <consumerKey>3MVG9sVI3Fa3A7wCCTRU_DRcHZGXFRidCMcDDvLCQNjhoxOWpjB9rGP1Uf1MrEjDWJKImNCHWCRgr7gon4xPP</consumerKey>
+    <consumerSecret>Placeholder_Value</consumerSecret>
+    <defaultScopes>refresh_token api</defaultScopes>
+    <friendlyName>Laser</friendlyName>
+    <includeOrgIdInIdentifier>true</includeOrgIdInIdentifier>
+    <providerType>Salesforce</providerType>
+    <requireMfa>false</requireMfa>
+    <sendAccessTokenInHeader>false</sendAccessTokenInHeader>
+    <sendClientCredentialsInHeader>false</sendClientCredentialsInHeader>
+    <sendSecretInApis>true</sendSecretInApis>
+    <tokenUrl>https://aiflyofficial--aiflysolu.sandbox.my.salesforce.com/services/oauth2/token</tokenUrl>
+</AuthProvider>

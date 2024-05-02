@@ -1,0 +1,115 @@
+<template>
+	<div class="modal">
+		<lightning-modal-body>
+			<lightning-record-view-form object-api-name="Teacher__c" record-id={teacherId}>
+				<lightning-layout multiple-rows>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="12"
+						large-device-size="12">
+						<lightning-accordion allow-multiple-sections-open active-section-name={activeSections}>
+							<lightning-accordion-section name="A" label="Personal Details">
+								<lightning-layout multiple-rows>
+									<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+										large-device-size="6">
+										<lightning-output-field field-name="Enrollment_Number__c">
+										</lightning-output-field>
+									</lightning-layout-item>
+									<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+										large-device-size="6">
+										<lightning-output-field field-name="First_Name__c">
+										</lightning-output-field>
+									</lightning-layout-item>
+									<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+										large-device-size="6">
+										<lightning-output-field field-name="Last_Name__c">
+										</lightning-output-field>
+									</lightning-layout-item>
+									<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+										large-device-size="6">
+										<lightning-output-field field-name="Class__c" required>
+										</lightning-output-field>
+									</lightning-layout-item>
+									<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+										large-device-size="6">
+										<lightning-output-field field-name="Contact_Information__c">
+										</lightning-output-field>
+									</lightning-layout-item>
+									<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+										large-device-size="6">
+										<lightning-output-field field-name="Blood_Group__c">
+										</lightning-output-field>
+									</lightning-layout-item>
+									<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+										large-device-size="6">
+										<lightning-output-field field-name="School__c">
+										</lightning-output-field>
+									</lightning-layout-item>
+									<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+										large-device-size="6">
+										<lightning-output-field field-name="Specialization__c">
+										</lightning-output-field>
+									</lightning-layout-item>
+								</lightning-layout>
+							</lightning-accordion-section>
+							<lightning-accordion-section name="B" label="Parents/Guardians Details">
+								<lightning-layout multiple-rows>
+									<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+										large-device-size="6">
+										<lightning-output-field field-name="Father_Name__c">
+										</lightning-output-field>
+									</lightning-layout-item>
+									<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+										large-device-size="6">
+										<lightning-output-field field-name="Mother_Name__c">
+										</lightning-output-field>
+									</lightning-layout-item>
+									<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+										large-device-size="6">
+										<lightning-output-field field-name="Parent_Contact_Information__c">
+										</lightning-output-field>
+									</lightning-layout-item>
+								</lightning-layout>
+							</lightning-accordion-section>
+							<lightning-accordion-section name="C" label="Address" class="accordians">
+								<lightning-layout multiple-rows>
+									<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+										large-device-size="6">
+										<lightning-output-field field-name="Country__c"></lightning-output-field>
+									</lightning-layout-item>
+									<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+										large-device-size="6">
+										<lightning-output-field field-name="State__c"></lightning-output-field>
+									</lightning-layout-item>
+									<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+										large-device-size="6">
+										<lightning-output-field field-name="City__c"></lightning-output-field>
+									</lightning-layout-item>
+									<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+										large-device-size="6">
+										<lightning-output-field field-name="Address1__c"></lightning-output-field>
+									</lightning-layout-item>
+									<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+										large-device-size="6">
+										<lightning-output-field field-name="Address2__c"></lightning-output-field>
+									</lightning-layout-item>
+									<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+										large-device-size="6">
+										<lightning-output-field field-name="Postal_Code__c">
+										</lightning-output-field>
+									</lightning-layout-item>
+									<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+										large-device-size="6">
+										<lightning-output-field field-name="Locality__c"></lightning-output-field>
+									</lightning-layout-item>
+									<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+										large-device-size="6">
+										<lightning-output-field field-name="Landmark__c"></lightning-output-field>
+									</lightning-layout-item>
+								</lightning-layout>
+							</lightning-accordion-section>
+						</lightning-accordion>
+					</lightning-layout-item>
+				</lightning-layout>
+			</lightning-record-view-form>
+		</lightning-modal-body>
+	</div>
+</template>

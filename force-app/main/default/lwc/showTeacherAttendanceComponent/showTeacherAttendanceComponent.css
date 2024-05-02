@@ -1,0 +1,112 @@
+table {
+    padding-top: 5px;
+}
+
+.table_head th {
+    background-color: #36c;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+table, td {
+  text-align: center;
+  font-size: 20px;
+  margin: 5px;
+}
+
+tr:nth-child(even) {
+  background-color: #eee;
+}
+
+.slds-modal__container {
+    max-width: 80rem !important;
+    width: 80% !important;
+}
+
+.calendar {
+    font-family: Arial, sans-serif;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: lightblue;
+    padding: 10px;
+}
+
+.calendar-month{
+	font-size: 16px;
+}
+
+.calendar-body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    padding: 10px;
+}
+
+.day {
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+.day-name {
+    text-align: center;
+    font-weight: bold;
+}
+
+.day.empty {
+    background-color: #f5f5f5;
+}
+.next-button:hover{
+	color: white;
+}
+
+.calendar {
+    font-family: Arial, sans-serif;
+}
+.calendar-header {
+    text-align: center;
+    color: #fff;
+    padding: 10px;
+}
+.calendar-body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    padding: 10px;
+}
+.day {
+    font-weight: 800;
+    text-align: center;
+    padding: 30px;
+    border: 1px solid #ccc;
+    background-color: white;
+}
+.day-name {
+    text-align: center;
+    font-weight: bold;
+}
+
+.present{
+    color: green;
+}
+
+.halfday{
+    color: orange;
+}
+
+.absent{
+    color: red;
+}
+
+.weekend{
+    color: grey;
+}
+
+.leave-a{
+    color: red;
+}

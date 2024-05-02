@@ -1,0 +1,224 @@
+.adminName span {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.Parents_Box{
+	cursor: pointer;
+    font-size: 20px;
+    background-color: #ffff;
+}
+
+.Parents_Box:hover {
+	text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	transition: all 0.4s ease 0s;
+    background-color: #5867e8;
+    color: #ffff;
+}
+
+.Students_Box{
+	cursor: pointer;
+    font-size: 20px;
+    background-color: #ffff;
+}
+
+.Students_Box:hover {
+	text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	transition: all 0.4s ease 0s;
+    background-color: #1b96ff;
+    color: #ffff;
+}
+
+.Teachers_Box{
+	cursor: pointer;
+    font-size: 20px;
+    background-color: #ffff;
+}
+
+.Teachers_Box:hover {
+	text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	transition: all 0.4s ease 0s;
+    background-color: #1b96ff;
+    color: #ffff;
+}
+
+.Employee_Box{
+	cursor: pointer;
+    font-size: 20px;
+    background-color: #ffff;
+}
+
+.Employee_Box:hover {
+	text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	transition: all 0.4s ease 0s;
+    background-color: #5867e8;
+    color: #ffff;
+}
+
+.Admin_Box{
+	cursor: pointer;
+    font-size: 20px;
+    background-color: #ffff;
+}
+
+.Admin_Box:hover {
+	text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	transition: all 0.4s ease 0s;
+    background-color: #1b96ff;
+    color: #ffff;
+}
+
+.calendar {
+    margin-top: -15%;
+}
+
+.scrollbar
+{
+    width: 50%;
+    margin-left: 5px;
+    height: 100px;
+    overflow-y: scroll;
+}
+.style-3::-webkit-scrollbar-track
+{
+    background-color: #F5F5F5;
+}
+
+.style-3::-webkit-scrollbar
+{
+    width: 6px;
+    background-color: #F5F5F5;
+}
+
+.style-3::-webkit-scrollbar-thumb
+{
+    background-color: #99d4f2;
+    border-radius: 5px;
+}
+
+.Assigned_Class_Box{
+    height: 140px;
+	cursor: pointer;
+    font-size: 20px;
+	background-color: #ffff;
+}
+
+.Assigned_Class_Box:hover {
+	text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(44, 43, 43, 0.57);
+	transition: all 0.4s ease 0s;
+    color: #ffff;
+    background-color: #5867E8;
+}
+
+.New_Registration_Box{
+    height: 140px;
+	cursor: pointer;
+    font-size: 20px;
+	background-color: #ffff;
+}
+
+.New_Registration_Box:hover {
+	text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(44, 43, 43, 0.57);
+	transition: all 0.4s ease 0s;
+    color: #ffff;
+    background-color: #3BA755;
+}
+
+.Attendance_Box{
+    height: 140px;
+	cursor: pointer;
+    font-size: 20px;
+	background-color: #ffff;
+}
+
+.Attendance_Box:hover {
+	text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(44, 43, 43, 0.57);
+	transition: all 0.4s ease 0s;
+    color: #ffff;
+    background-color: #5867E8;
+}
+
+.back_button {
+    margin-bottom: 5px;
+}
+
+.new_button {
+    padding-right: 1%;
+}
+
+table {
+    padding-top: 5px;
+}
+
+.table_head th {
+    background-color: #36c;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+table, td {
+  text-align: center;
+  font-size: 20px;
+    padding: 10px;
+  margin: 5px;
+}
+
+tr:nth-child(even) {
+  background-color: #eee;
+}
+
+.slds-modal__container {
+    max-width: 80rem !important;
+    width: 80% !important;
+}
+
+.red-utility-icon {
+        --sds-c-icon-color-foreground-default: #fff;
+}
+
+.exampleHolder{
+    position: relative;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
+
+.buttonStyle{
+	float: right;
+}
+
+ .fancy-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    background-color: #80d084;
+    border-radius: 20px; 
+    transform: scale(0.9); 
+  }
+  
+  .fancy-button:hover {
+    background-color: #45a049;
+    text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(44, 43, 43, 0.57);
+	transition: all 0.4s ease 0s;
+  }

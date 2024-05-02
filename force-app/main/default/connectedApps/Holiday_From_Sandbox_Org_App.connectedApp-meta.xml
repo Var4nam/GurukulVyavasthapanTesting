@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>yashwantjangid404@gmail.com</contactEmail>
+    <label>Holiday From Sandbox Org App</label>
+    <oauthConfig>
+        <callbackUrl>https://aiflytechnologysolutionspv3-dev-ed.develop.my.salesforce.com/services/authcallback/Saelsforce_to_Salesforce_Info</callbackUrl>
+        <consumerKey>3MVG9D68eYs7112GvRqF49_2QEJqSQqg4fGGbbdzuMmR1vzE_F3MfMW01IswzJm5rT7jjA5Nek9VKNe0x.x1_</consumerKey>
+        <isAdminApproved>false</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <scopes>Full</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+</ConnectedApp>

@@ -1,0 +1,107 @@
+<apex:page renderAs="pdf" standardStylesheets="false" showHeader="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" controller="StudentResultController">
+    <html lang="en">
+        
+        <head>
+            <title>Table Block</title>
+            <style>
+                table {
+                width: 100%;
+                border-collapse: collapse;
+                }
+                
+                td {
+                border: 1px solid black;
+                padding: 10px; 
+                text-align: left; 
+                vertical-align: bottom;
+                }
+                
+                table, td {
+                border: 1px solid black;
+                }
+                
+            </style>
+        </head>
+        
+        <body>
+            <div class="payslip-section">
+                <div class="payslip-value">
+                    <table class="payslip-table">
+                        <thead>
+                            <tr>
+                                <th><apex:image url="{!$Resource.school + '/SCHOOLLOGO'}" width="200" alt="School logo" style="margin-top:30px;"/>
+                                </th>
+                                <th><h1 style="font-size:18px; padding:2px; margin-top:-8px; text-align: center;">{!schoolName}  </h1>
+                                    <p style="margin-left: 80px;">{!schoolAddress}</p>
+                                    <p style="display: inline-block; margin-left: 110px; margin-top:-20px;"> AFFILIATED TO CBSE</p>
+                                    <p style="margin-left:343px; margin-bottom: 0;">PHONE: {!schoolPhone}</p>
+                                    <p style="margin-left: 10px; margin-top:-20px;">EMAIL: {!schoolEmail}</p></th>
+                                <p style="padding-left:10px; text-align: center; margin-top:-5px;">PROGRESS CARD-2023-2024</p>
+                            </tr>
+                            <tr>
+                                <th colspan="2"><p style="text-align:center; background-color:#FFC0CB; margin-top:-15px">STUDENT'S PROFILE</p></th>
+                            </tr>
+                            <tr>
+                                <th colspan = "2"> 
+                                    <table class="bottt">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="3">NAME: {!studentName}</th>
+                                                <th colspan="3"><span style="margin-left:250px;">FATHER Name: {!studentFatherName}</span></th>
+                                            </tr>
+                                            <tr>
+                                                <th colspan="3">Enrollment NO : {!enrollNumber}</th>
+                                                <th colspan="3"><span  style="margin-left:250px;">DOB: {!DOB}</span></th>
+                                            </tr>
+                                            <tr>
+                                                <th colspan="3">ROLL NO: {!rollNumber} </th>
+                                            </tr>
+                                            <tr>
+                                                <th style="margin-right:50px;">CLASS-SEC:  {!classSec}</th>
+                                            </tr>
+                                            <tr>
+                                                <th colspan="3"></th>
+                                            </tr>
+                                            <tr>
+                                                <th colspan="3"></th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th colspan="2"><p style="text-align:center; background-color:#FFC0CB; margin-top:5px">ACADEMIC PERFORMANCE-SCHOLASTIC AREA</p></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            
+            <table>
+                <tr>
+                    <td colspan="7" rowspan="2">Subject Name</td>
+                    <td colspan="6" style="text-align:center;">Marks Obtained</td>
+                </tr>
+                <tr>
+                    <td style="text-align:center;">First Test</td>
+                    <td style="text-align:center;">Second Test</td>
+                    <td style="text-align:center;">Third Test</td>
+                    <td style="text-align:center;">Half Yearly</td>
+                    <td style="text-align:center;">Final Test</td>
+                    <td style="text-align:center; margin-top:-10px;">Total</td>
+                </tr>
+                <apex:repeat value="{!subjects}" var="subject">
+                    <tr>
+                        <td colspan="7">{!subject.Name}</td>
+                        <td style="text-align:center;">{!subject.First_Test}</td>
+                        <td style="text-align:center;">{!subject.Second_Test}</td>
+                        <td style="text-align:center;">{!subject.Third_Test}</td>
+                        <td style="text-align:center;">{!subject.Half_Yearly}</td>
+                        <td style="text-align:center;">{!subject.Final_Test}</td>
+                        <td style="text-align:center;">{!subject.Total}</td>
+                    </tr>
+                </apex:repeat>
+            </table>
+        </body>
+    </html>
+</apex:page>

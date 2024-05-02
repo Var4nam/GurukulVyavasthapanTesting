@@ -1,0 +1,64 @@
+<template>
+	<lightning-card>
+		<div if:true={showLogoutButton} class="buttonStyle slds-m-right_medium">
+			<button class="fancy-button" onclick={handleClick} label="Log Out">Log Out</button>
+		</div>
+		<div>
+			<lightning-layout multiple-rows class="slds-theme_shade">
+				<lightning-layout-item size="12" padding="around-small" medium-device-size="3" large-device-size="2">
+					<div class="header-column">
+						<div>
+							<img style="max-height: 200px; cursor: pointer; margin-top: -50px;" alt="Compnay logo" src={companyLogo} onclick={handleLogoClick}/>
+            </div>
+							<lightning-vertical-navigation selected-item="reports_home">
+								<lightning-vertical-navigation-item-icon label="Personal Information"
+									name="reports_personal_information" icon-name="standard:user"
+									onclick={handlePersonalInformationTab}>
+								</lightning-vertical-navigation-item-icon>
+								<lightning-vertical-navigation-item-icon label="Parent Home" name="reports_home"
+									icon-name="standard:dashboard" onclick={handleHomeTab}>
+								</lightning-vertical-navigation-item-icon>
+								<lightning-vertical-navigation-item-icon label="Attendance" name="reports_attendance"
+									icon-name="standard:campaign_members" onclick={handleAttendanceTab}>
+								</lightning-vertical-navigation-item-icon>
+								<lightning-vertical-navigation-item-icon label="Event Calendar"
+									name="reports_eventManagement" icon-name="standard:event"
+									onclick={handleEventCalendarTab}>
+								</lightning-vertical-navigation-item-icon>
+							</lightning-vertical-navigation>
+						</div>
+				</lightning-layout-item>
+				<template if:true={showPersonalInformationTab}>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="9"
+						large-device-size="10">
+						<c-parent-personal-information-component></c-parent-personal-information-component>
+					</lightning-layout-item>
+				</template>
+				<template if:true={showHomeTab}>
+					<lightning-layout-item size="12" medium-device-size="8" large-device-size="2">
+					</lightning-layout-item>
+					<lightning-layout-item size="12" medium-device-size="8" large-device-size="3">
+						<div class="slds-box">
+							<c-announcement-dashboard></c-announcement-dashboard>
+						</div>
+					</lightning-layout-item>
+					<lightning-layout-item size="12" medium-device-size="8" large-device-size="1">
+					</lightning-layout-item>
+				</template>
+				<template if:true={showEventCalendarTab}>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="9"
+						large-device-size="10">
+						<!-- <c-event-calendar-component></c-event-calendar-component> -->
+						<c-calendar></c-calendar>
+					</lightning-layout-item>
+				</template>
+				<template if:true={showAttendanceTab}>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="9"
+						large-device-size="10">
+						<c-attendance-calendar-component student-name={studentName} student-id={studentId}></c-attendance-calendar-component>
+					</lightning-layout-item>
+				</template>
+			</lightning-layout>
+		</div>
+	</lightning-card>
+</template>

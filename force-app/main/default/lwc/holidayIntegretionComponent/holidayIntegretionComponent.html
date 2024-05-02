@@ -1,0 +1,35 @@
+<template>
+	<lightning-card>
+		<lightning-layout multiple-rows>
+			<lightning-layout-item size="12" padding="around-small" medium-device-size="6" large-device-size="6">
+				<lightning-combobox required name="year" label="Year" value={selectedYear} placeholder="Select Year"
+					options={years} onchange={handleYearChange}></lightning-combobox>
+			</lightning-layout-item>
+			<lightning-layout-item size="12" padding="around-small" medium-device-size="6" large-device-size="6">
+                <div style="padding-top:20px">
+                    <lightning-button variant="brand" label="Get Holidays" onclick={handleGetHolidayClick}>
+                    </lightning-button>
+                    <template if:true={showSaveButton}>
+                        <lightning-button class="slds-p-left_small" variant="brand-outline" label="Save Records"
+                            onclick={handleSaveClick}></lightning-button>
+                    </template>
+                </div>
+			</lightning-layout-item>
+			<lightning-layout-item size="12" padding="around-small" medium-device-size="12" large-device-size="12">
+				<template if:true={showDatatable}>
+					<div>
+						<lightning-datatable key-field="id" data={holidays} show-row-number-column
+							row-number-offset={rowOffset} hide-checkbox-column columns={columnsList}
+							onrowaction={handleRowAction}>
+						</lightning-datatable>
+					</div>
+				</template>
+				<template if:true={showEmptyMsg}>
+					<div>
+						<p class="slds-align_absolute-center" style="color: red"> No records found! </p>
+					</div>
+				</template>
+			</lightning-layout-item>
+		</lightning-layout>
+	</lightning-card>
+</template>

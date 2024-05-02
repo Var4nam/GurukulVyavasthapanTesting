@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Type</label>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Game</fullName>
+                <default>false</default>
+                <label>Game</label>
+            </value>
+            <value>
+                <fullName>Exam</fullName>
+                <default>false</default>
+                <label>Exam</label>
+            </value>
+            <value>
+                <fullName>Test</fullName>
+                <default>false</default>
+                <label>Test</label>
+            </value>
+            <value>
+                <fullName>Result</fullName>
+                <default>false</default>
+                <label>Result</label>
+            </value>
+            <value>
+                <fullName>Other Events</fullName>
+                <default>false</default>
+                <label>Other Events</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,110 @@
+<template>
+	<!-- <lightning-layout multiple-rows>
+		<lightning-layout-item size="12" padding="around-small" small-device-size="12" medium-device-size="12"
+			large-device-size="12">
+			<div class="date-combobox years">
+				<select onchange={handleYearChange}>
+                    <option value={selectedYear}>{selectedYear}</option>
+                    <template for:each={years} for:item="year">
+                        <option key={year} value={year}>{year}</option>
+                    </template>
+                </select>
+			</div>
+		</lightning-layout-item>
+
+		<template for:each={monthNames} for:item="month">
+			<lightning-layout-item key={month.name} size="12" padding="around-small" small-device-size="12"
+				medium-device-size="6" large-device-size="4">
+				<lightning-card>
+					<div class="slds-p-horizontal_small customStyle">
+						<p class="slds-text-heading_large">{month.monthName}</p>
+						<ul>
+							<div if:false={month.isTrue}>
+								<template for:each={month.holidays} for:item="holiday">
+									<li key={holiday} class="slds-m-left_small slds-m-top_small">
+										<p>
+											<lightning-formatted-date-time value={holiday.date} day="2-digit"
+												class="holiday-date">
+											</lightning-formatted-date-time>
+											<span class="slds-m-left_x-large">
+											<b>{holiday.des}</b>
+										</span>
+										</p>
+										<lightning-formatted-date-time value={holiday.date} weekday="short">
+										</lightning-formatted-date-time>
+										<p>{holiday.day}</p> 
+									</li>
+								</template>
+							</div>
+							<div class="slds-text-align_center slds-p-top_xx-large holidays" if:true={month.isTrue}>
+								<b>No Holidays</b>
+							</div>
+						</ul>
+					</div>
+				</lightning-card>
+			</lightning-layout-item>
+		</template>
+	</lightning-layout> -->
+
+
+	<lightning-card>
+		<template if:true={waitForASection}>
+			<div class="exampleHolder slds-align_absolute-center">
+				<lightning-spinner alternative-text="Loading" size="x-small"></lightning-spinner>
+			</div>
+		</template>
+		<div>
+			<span class="slds-align_absolute-center" style="font-size: 26px; text-shadow: 0 0 BLACK;">Events</span>
+			<hr>
+		</div> 
+			<div class="calendar">
+				<div class="calendar-header">
+					<lightning-button variant="brand-outline" label="Previous" icon-name="utility:chevronleft"
+						onclick={handlePreviousClick} class="prev-button"></lightning-button>
+					<h2 class="calendar-month">{currentMonth}<span> (<span>{currentYear}</span>) </span></h2>
+					<lightning-button variant="brand-outline" icon-name="utility:chevronright" label="Next"
+						icon-position="right" onclick={handleNextClick} class="next-button"></lightning-button>
+				</div>
+				<div class="calendar-body">
+					<template for:each={dayNames} for:item="dayName">
+						<div key={dayName} class="day-name">{dayName}</div>
+					</template>
+					<template for:each={emptyCells} for:item="cell">
+						<div key={cell} class="day empty"></div>
+					</template>
+					<template for:each={days} for:item="day">
+						<div key={day.date} class={day.className} data-id={day.label} data-name={day.name}
+							data-title={day.type} data-value={day.className} onclick={showModal}>
+							<span style="font-size: 30px; font-weight: 800;">{day.label}</span>
+							<span class="slds-align_absolute-center" style="font-size: 15px; font-weight: bold;">{day.name}</span>
+						</div>
+					</template>
+				</div>
+			</div>
+		<template if:true={showHolidayDetails}>
+			<lightning-card>
+				<section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+					class="slds-modal slds-fade-in-open">
+					<div class="slds-modal__container">
+						<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+						<lightning-icon icon-name="utility:close" class='red-utility-icon' size="small" onclick={closeModal}></lightning-icon>
+						<span class="slds-assistive-text">Cancel and close</span>
+				</button>
+						<div class="slds-modal__header">
+							<h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate" tabindex="-1">Holiday
+								Details
+							</h1>
+						</div>
+						<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+							<span>{dayOfLeave}</span>
+							<span>{nameOfLeave}</span>
+							<br>
+							<span>{typeOfLeave}</span>
+						</div>
+					</div>
+				</section>
+				<div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+			</lightning-card>
+		</template>
+	</lightning-card>
+</template>

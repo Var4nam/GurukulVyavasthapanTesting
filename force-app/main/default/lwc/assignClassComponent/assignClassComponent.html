@@ -1,0 +1,236 @@
+<template>
+	<template if:true={waitForASection}>
+		<div class="exampleHolder">
+			<lightning-spinner alternative-text="Loading" size="x-small"></lightning-spinner>
+		</div>
+	</template>
+	<div class="buttons">
+		<template if:true={showButtons}>
+			<lightning-layout multiple-rows>
+				<lightning-layout-item size="12" padding="around-small" small-device-size="3" medium-device-size="6"
+					large-device-size="3">
+					<lightning-input type="search" variant="standard" placeholder="Search Assign Class..."
+						onkeyup={handleSearch}></lightning-input>
+				</lightning-layout-item>
+				<lightning-layout-item size="12" padding="around-small" small-device-size="3" medium-device-size="6"
+					large-device-size="3">
+				</lightning-layout-item>
+				<lightning-layout-item size="12" padding="around-small" small-device-size="3" medium-device-size="6"
+					large-device-size="2">
+				</lightning-layout-item>
+				<lightning-layout-item size="12" padding="around-small" small-device-size="3" medium-device-size="6"
+					large-device-size="4">
+					<div class="slds-text-align_right slds-p-top_medium">
+						<template if:true={showAssignClassTable}>
+							<lightning-button variant="brand-outline" label="Config" onclick={handleConfigClick}>
+							</lightning-button>
+						</template>
+						<lightning-button class="slds-p-left_xx-small" variant="brand" label="New"
+							onclick={handleCreateClick}>
+						</lightning-button>
+						<lightning-button class="slds-p-horizontal_xx-small" variant="destructive" label="Delete"
+							onclick={handleDeleteClick}>
+						</lightning-button>
+						<lightning-button variant="success" label="Import" onclick={handleImport}>
+						</lightning-button>
+						<template if:true={showUploadSection}>
+							<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-02" aria-modal="true"
+								aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+								<div class="slds-modal__container">
+									<header class="slds-modal__header">
+										<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={handleCancel}>
+										<lightning-icon icon-name="utility:close"
+											alternative-text="close"
+											variant="inverse"
+											size="small" ></lightning-icon>
+										<span class="slds-assistive-text">Close</span>
+										</button>
+										<h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">
+											Upload
+											File</h2>
+									</header>
+									<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+										<template if:false={showNextModal}>
+											<div class="file-uploader">
+												<lightning-input label="" name="file uploader"
+													onchange={handleFilesChange} type="file" multiple>
+												</lightning-input>
+												<div class="slds-col slds-align_absolute-center">
+													<a href={sampleCsvUrl} download="sample.csv"
+														class="download-link">Download
+														Sample CSV</a>
+												</div>
+												<div class="error-message">{fileName}</div>
+											</div>
+										</template>
+										<template if:true={showNextModal}>
+											<div class="back_button slds-text-align_left">
+												<lightning-button variant="brand-outline" label="Back"
+													onclick={handleModalBack}>
+												</lightning-button>
+											</div>
+											<div class="slds-scrollable_y cardSpinner" style="height:22rem;width:100%"
+												tabindex="0">
+												<!-- <c-custom-data-table key-field="Id" data={importedRecords}
+													columns={column} show-row-number-column>
+												</c-custom-data-table> -->
+												<lightning-datatable
+														key-field="Id"
+														data={importedRecords}
+														show-row-number-column
+														hide-checkbox-column
+														columns={column}>
+													</lightning-datatable>
+											</div>
+										</template>
+									</div>
+									<footer class="slds-modal__footer slds-modal__footer_center">
+										<button class="slds-button slds-button_neutral" onclick={handleCancel}>Cancel</button>
+										<template if:false={showNextModal}>
+											<button class="slds-button slds-button_brand" label='Next' onclick={handleNextModal}>Next</button>
+										</template>
+										<template if:true={showNextModal}>
+											<button class="slds-button slds-button_brand" label='Save' onclick={handlesaveFile} disabled={isTrue}>Save</button>
+										</template>
+									</footer>
+								</div>
+							</section>
+							<div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+						</template>
+					</div>
+				</lightning-layout-item>
+			</lightning-layout>
+		</template>
+		<template if:true={showAssignClassTable}>
+			<div class="slds-box slds-theme_shade slds-theme_alert-texture">
+				<template if:true={showConfigModal}>
+					<section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+						class="slds-modal slds-fade-in-open">
+						<div class="slds-modal__container">
+							<div class="slds-modal__header">
+								<h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Select Fields</h1>
+							</div>
+							<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+								<lightning-dual-listbox name="languages" label="Select Languages"
+									source-label="Available" selected-label="Selected"
+									field-level-help="Select your preferred languages" options={options}
+									onchange={handleChange} value={values}></lightning-dual-listbox>
+							</div>
+							<div class="slds-modal__footer">
+								<button class="slds-button slds-button_neutral" aria-label="Cancel and close" onclick={handleConfigModalCancel}>Cancel</button>
+								<button class="slds-button slds-button_brand" onclick={handleConfigModalSave}>Save</button>
+							</div>
+						</div>
+					</section>
+					<div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+				</template>
+				<div class="slds-scrollable_y  slds-var-p-around_small" style="height:22rem;width:100%" tabindex="0">
+					<c-custom-data-table key-field="Id" data={visibleRecords} columns={assignClassColumns}
+						onrowaction={handleRowAction} how-row-number-column resize-column-disabled onsave={handleSave}
+						draft-values={saveDraftValues} sorted-by={sortBy} sorted-direction={sortDirection}
+						onsort={doSorting} class="custom-datatable-style">
+						<!-- <div class="slds-p-top_xx-small buttons">
+							<div class="slds-align_absolute-center">
+								<lightning-button variant="brand-outline" label="Cancel" onclick={handleCancelClick}>
+								</lightning-button> -->
+								<!-- Conditional rendering for Save button -->
+								<!-- <template if:true={changesMade}>
+									<lightning-button class="slds-p-left_xx-small" variant="brand" type="submit"
+										label="Save">
+									</lightning-button>
+								</template>
+							</div>
+						</div> -->
+					</c-custom-data-table>
+					<table
+						class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered custom-datatable-style"
+						style="width: 100%;">
+						<thead>
+							<tr class="slds-line-height_reset">
+								<th class="" scope="col">
+									<div class="slds-truncate" title="Class Name">Class Name</div>
+								</th>
+								<th class="" scope="col">
+									<div class="slds-truncate" title="Subject Name">Subject Name</div>
+								</th>
+								<th class="" scope="col">
+									<div class="slds-truncate" title="Teacher Name">Teacher Name</div>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<template for:each={visibleRecords} for:item="element" for:index="index">
+								<c-custom-data-table key={element} record-data={element} index={index} onlookupchanges={handleLookupChange} 
+									table-type="AssignClass" style="display:contents;" class="assignClassTable"></c-custom-data-table>
+							</template>
+						</tbody>
+					</table>
+				</div>
+				<lightning-layout>
+					<lightning-layout-item>
+						<lightning-button label="Previous" icon-name="utility:chevronleft" onclick={previousHandler}
+							disabled={disablePrevious}></lightning-button>
+					</lightning-layout-item>
+					<lightning-layout-item flexibility="grow">
+						<p class="slds-text-align_center">Displaying {currentPage} of {totalPage} Page</p>
+					</lightning-layout-item>
+					<lightning-layout-item>
+						<lightning-button label="next" icon-name="utility:chevronright" icon-position="right"
+							onclick={nextHandler} disabled={disableNext}></lightning-button>
+					</lightning-layout-item>
+				</lightning-layout>
+			</div>
+		</template>
+		<template if:true={showAssignClassTableEmpty}>
+			<lightning-card>
+				<div style="height:22rem;">
+					<span class="slds-align_absolute-center" style="color:red">No records found!</span>
+				</div>
+			</lightning-card>
+		</template>
+		<template if:true={showCreateModal}>
+			<div class="modal">
+				<lightning-modal-body>
+					<lightning-record-edit-form object-api-name="Assign_Classes__c" onsuccess={handleSaveClick}>
+						<lightning-layout multiple-rows>
+							<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+								large-device-size="6">
+								<lightning-output-field field-name="Name"></lightning-output-field>
+							</lightning-layout-item>
+							<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+								large-device-size="6">
+								<lightning-output-field field-name="Teacher__c"></lightning-output-field>
+							</lightning-layout-item>
+							<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+								large-device-size="6">
+								<lightning-output-field field-name="Class__c"></lightning-output-field>
+							</lightning-layout-item>
+							<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+								large-device-size="6">
+								<lightning-output-field field-name="Subject__c"></lightning-output-field>
+							</lightning-layout-item>
+						</lightning-layout>
+						<div class="slds-p-top_xx-small buttons ">
+							<div class="slds-align_absolute-center">
+								<lightning-button variant="brand-outline" label="Cancel" onclick={handleCancelClick}>
+								</lightning-button>
+								<lightning-button class="slds-p-left_xx-small" variant="brand" type="submit"
+									label="Save">
+								</lightning-button>
+							</div>
+						</div>
+					</lightning-record-edit-form>
+				</lightning-modal-body>
+			</div>
+		</template>
+	</div>
+	<div if:true={changesMade} class="slds-p-top_xx-small buttons">
+		<div class="slds-align_absolute-center">
+			<lightning-button variant="brand-outline" label="Cancel" onclick={handleCancelClick}>
+			</lightning-button>
+			Conditional rendering for Save button
+			<lightning-button class="slds-p-left_xx-small" variant="brand" label="Save" onclick={handleSaveChanges}>
+			</lightning-button>
+		</div>
+	</div>
+</template>

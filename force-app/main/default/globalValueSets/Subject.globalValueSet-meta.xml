@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Accountancy</fullName>
+        <default>true</default>
+        <label>Accountancy</label>
+    </customValue>
+    <customValue>
+        <fullName>Art &amp; Craft</fullName>
+        <default>false</default>
+        <label>Art &amp; Craft</label>
+    </customValue>
+    <customValue>
+        <fullName>Biology</fullName>
+        <default>false</default>
+        <label>Biology</label>
+    </customValue>
+    <customValue>
+        <fullName>Business Studies</fullName>
+        <default>false</default>
+        <label>Business Studies</label>
+    </customValue>
+    <customValue>
+        <fullName>Chemistry</fullName>
+        <default>false</default>
+        <label>Chemistry</label>
+    </customValue>
+    <customValue>
+        <fullName>Computer Science</fullName>
+        <default>false</default>
+        <label>Computer Science</label>
+    </customValue>
+    <customValue>
+        <fullName>Economics</fullName>
+        <default>false</default>
+        <label>Economics</label>
+    </customValue>
+    <customValue>
+        <fullName>English</fullName>
+        <default>false</default>
+        <label>English</label>
+    </customValue>
+    <customValue>
+        <fullName>Environmental Studies</fullName>
+        <default>false</default>
+        <label>Environmental Studies</label>
+    </customValue>
+    <customValue>
+        <fullName>Geography</fullName>
+        <default>false</default>
+        <label>Geography</label>
+    </customValue>
+    <customValue>
+        <fullName>Hindi</fullName>
+        <default>false</default>
+        <label>Hindi</label>
+    </customValue>
+    <customValue>
+        <fullName>History</fullName>
+        <default>false</default>
+        <label>History</label>
+    </customValue>
+    <customValue>
+        <fullName>Mathematics</fullName>
+        <default>false</default>
+        <label>Mathematics</label>
+    </customValue>
+    <customValue>
+        <fullName>Physical education</fullName>
+        <default>false</default>
+        <label>Physical education</label>
+    </customValue>
+    <customValue>
+        <fullName>Physics</fullName>
+        <default>false</default>
+        <label>Physics</label>
+    </customValue>
+    <customValue>
+        <fullName>Political Science</fullName>
+        <default>false</default>
+        <label>Political Science</label>
+    </customValue>
+    <customValue>
+        <fullName>Psychology</fullName>
+        <default>false</default>
+        <label>Psychology</label>
+    </customValue>
+    <customValue>
+        <fullName>Science</fullName>
+        <default>false</default>
+        <label>Science</label>
+    </customValue>
+    <customValue>
+        <fullName>Social Studies</fullName>
+        <default>false</default>
+        <label>Social Studies</label>
+    </customValue>
+    <customValue>
+        <fullName>Sociology</fullName>
+        <default>false</default>
+        <label>Sociology</label>
+    </customValue>
+    <masterLabel>Subject</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

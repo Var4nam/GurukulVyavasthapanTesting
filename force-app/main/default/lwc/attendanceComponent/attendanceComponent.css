@@ -1,0 +1,92 @@
+table {
+    padding-top: 5px;
+}
+
+.table_head th {
+    background-color: #36c;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+table, td {
+  text-align: center;
+  font-size: 20px;
+  margin: 5px;
+}
+
+tr:nth-child(even) {
+  background-color: #eee;
+}
+
+.calendar {
+    font-family: Audrey;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1b96ff;
+    padding: 10px;
+}
+
+.calendar-month{
+    font-size: 30px;
+}
+
+.calendar-body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    padding: 10px;
+}
+
+.day {
+    padding: 30px;
+    border: 1px solid #ccc;
+    background-color: white;
+}
+
+.day-name {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.day.empty {
+    background-color: #f5f5f5;
+}
+
+.day-weekend {
+    padding: 30px;
+    border: 1px solid #ccc;
+    color: red;
+}
+
+.day-holiday {
+    padding: 30px;
+    border: 1px solid #ccc;
+    color: green;
+}
+
+.next-button:hover{
+    color: white;
+}
+
+.calendar {
+    font-family: Arial, sans-serif;
+}
+
+.calendar-header {
+    text-align: center;
+    color: #fff;
+    padding: 10px;
+}
+
+.calendar-body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    padding: 10px;
+}

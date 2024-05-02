@@ -1,0 +1,78 @@
+<template>
+    <lightning-card>
+		<lightning-layout multiple-rows>
+			<lightning-layout-item size="12" padding="around-small" small-device-size="3" medium-device-size="6"
+				large-device-size="3">
+				<div class="slds-p-top_medium">
+					<lightning-record-edit-form object-api-name="Attendance__c">
+						<lightning-input-field field-name="Class__c" variant="label-hidden" placeholder="Select Class"
+							value={classValue} onchange={handleClassChange}>
+						</lightning-input-field>
+					</lightning-record-edit-form>
+				</div>
+			</lightning-layout-item>
+			<lightning-layout-item size="12" padding="around-small" small-device-size="3" medium-device-size="6"
+				large-device-size="4">
+				<div class="slds-p-top_medium">
+					<lightning-button variant="brand-outline" label="Go" onclick={handleGetRecordsClick}>
+					</lightning-button>
+				</div>
+			</lightning-layout-item>
+			<lightning-layout-item size="12" padding="around-small" small-device-size="3" medium-device-size="6"
+				large-device-size="12">
+				<template if:true={goForResult}>
+					<div class="slds-box">
+						<table style="margin: 5px">
+							<thead>
+								<tr class="table_head">
+									<th>S.N.</th>
+									<th>Name</th>
+									<th>Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								<template for:each={examsList} for:item="exm" for:index="index">
+									<tr key={exm.Id}>
+										<td>{serialNumber}</td>
+										<td><span>{exm.Student__r.Name}</span></td>
+										<td class="slds-align_absolute-center">
+											<lightning-button variant="brand-outline" label="Show Result" data-id={exm.Id}
+												onclick={handleShowResultClick}>
+											</lightning-button>
+										</td>
+									</tr>
+								</template>
+							</tbody>
+						</table>
+					</div>
+				</template>
+			</lightning-layout-item>
+		</lightning-layout>
+		<template if:true={showResult}>
+			<section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+				class="slds-modal slds-fade-in-open">
+				<div class="slds-modal__container">
+					<header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={handleCancel}>
+                    <lightning-icon icon-name="utility:close"
+                        alternative-text="close"
+                        variant="inverse"
+                        size="small" ></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                    </button>
+                        <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">
+                            Result</h2>
+                    </header>
+					<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+						<div class="modal">
+							<lightning-modal-body>
+								<div>Calling VF page...</div>
+							</lightning-modal-body>
+						</div>
+					</div>
+				</div>
+			</section>
+			<div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+		</template>
+	</lightning-card>
+</template>

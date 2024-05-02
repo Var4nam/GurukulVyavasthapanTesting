@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lookup_IsNull</fullName>
+    <active>true</active>
+    <description>If a record has a lookup then it can&apos;t be re-parented.</description>
+    <errorConditionFormula>OR(ISCHANGED(Student__c),ISCHANGED(Teacher__c ), ISCHANGED( Staff__c))</errorConditionFormula>
+    <errorMessage>Can&apos;t be reparented to other lookup record.</errorMessage>
+</ValidationRule>

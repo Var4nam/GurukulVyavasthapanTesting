@@ -1,0 +1,32 @@
+<template>
+    <lightning-card  variant="Narrow"  title="CSV Uploader Records">
+        <lightning-input accept={acceptedFormats}  
+                        onchange={handleUploadFinished} 
+                        type="file">
+        </lightning-input>
+        <lightning-button label="Send Email" title="sendMail" onclick={sendEmailHandleClick}></lightning-button>
+     <template if:true={showTable}>    
+    <table>
+        <thead>
+            <tr class="slds-line-height_reset">
+                <template for:each={columnHeader} for:item="header">
+                    <th key={header} scope="col" style="max-width: 250px;">
+                        {header}
+                    </th>
+                </template>
+            </tr>
+        </thead>
+        <tbody>
+        <template for:each={elements} for:item="element">
+            <tr key={element.Id} class="slds-hint-parent">
+                <template for:each={element} for:item="ele">
+                    <!--<td key={ele}>{ele}<b>{bodyMail}</b></td>-->
+                    <td key={ele}>{ele}</td>
+                </template>
+            </tr>
+        </template>
+        </tbody>
+    </table>
+    </template>
+    </lightning-card>
+</template>

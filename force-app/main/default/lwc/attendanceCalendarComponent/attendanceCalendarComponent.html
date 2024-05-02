@@ -1,0 +1,24 @@
+<template>
+	<div class="calendar">
+		<div class="calendar-header">
+			<lightning-button variant="base" label="Prev" icon-name="utility:chevronleft" onclick={prevMonth}
+				class="prev-button"></lightning-button>
+			<h2 class="calendar-month">{currentMonth}</h2>
+			<lightning-button variant="base" icon-name="utility:chevronright" label="Next" icon-position="right"
+				onclick={nextMonth} class="next-button"></lightning-button>
+		</div>
+		<div class="calendar-body">
+			<template for:each={dayNames} for:item="dayName">
+				<div key={dayName} class="day-name">{dayName}</div>
+			</template>
+			<template for:each={emptyCells} for:item="cell">
+				<div key={cell} class="day empty"></div>
+			</template>
+			<template for:each={days} for:item="day">
+				<div key={day.date} class={day.className}>
+					{day.label}
+				</div>
+			</template>
+		</div>
+	</div>
+</template>

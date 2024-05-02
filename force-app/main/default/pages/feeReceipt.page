@@ -1,0 +1,163 @@
+<apex:page controller="FeeReceiptController"  standardStylesheets="false" showHeader="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false">
+    <html>
+        <head>
+            <title>Receipt</title>
+            <style>
+                body {
+                font-family: Arial, sans-serif;
+                }
+                .receipt {
+                width: 600px;
+                height:300px;
+                border: 1px solid #000;
+                padding: 10px;
+                }
+                .receipt-header {
+                text-align: center;
+                }
+                .receipt-body {
+                margin-top: 20px;
+                }
+                .receipt-footer {
+                margin-top: 10px;
+                text-align: center;
+                }
+                .amount-info {
+                margin-top: -5px;
+                }
+                .recieved {
+                margin-top: -200px;
+                margin-left: 200px;
+                text-align: center;
+                font-size:21px;
+                }
+                .paidby{
+                margin-left: 380px;
+                margin-top:5px;
+                }
+                .checkbox{
+                margin-left:410px;
+                margin-top:-10px;
+                }
+                .checkbox-item {
+                display: flex;
+                align-items: center;
+                margin-bottom: -30px;
+                }
+                .label-box {
+                width: 10px;
+                height: 10px;
+                }
+                .input-box{
+                width:105px;
+                }
+                .duration p {
+                margin-left:380px;
+                }
+                .DueAmount{
+                margin-left:380px;
+                margin-top: -30px;
+                }
+                .last-heading1{
+                margin-top:12px;
+                }
+                .payment-status{
+                margin-left:380px;
+                margin-top:-15px;
+                }
+                .input-boxx{
+                width:102px;
+                margin-left:110px;
+                margin-top:-35px;
+                }
+                .input-date{
+                width:102px;
+                margin-left:110px;
+                margin-top:-35px;
+                }
+                .input-tutionfee{
+                width:130px;
+                margin-left:90px;
+                margin-top:-36px;
+                }
+                .input-examination{
+                margin-left:505px;
+                margin-top:-37px;
+                width:95px;
+                }
+                .input-duration{
+                margin-left:80px;
+                margin-top:-35px;
+                width:139px;
+                }
+                .input-duedate{
+                width:100px;
+                margin-left:80px;
+                margin-top:-34px;
+                }
+                .input-extraactivity{
+                margin-left:510px;
+                margin-top:-35px;
+                width:90px;
+                }
+                .input-admissionfee{
+                width:90px;
+                margin-left:125px;
+                margin-top:-35px;
+                }
+                .studnt p{
+                margin-top:22px;
+                }
+            </style>
+        </head>
+        <body>
+            <apex:form >
+                <div class="receipt">
+                    <div class="receipt-body">
+                        <p>Serial Number:{!serialNumber}</p>
+                        <p style ="margin-left:70px;">Date:{!feeDate}</p>
+                        <p>Admission Fee:{!admissionFee}</p>
+                        <p>Tution Fee:{!tutionFee}</p>
+                        <div class="amount-info">
+                            <div class="label-text">Amount Of:{!amountOf}
+                            </div>
+                        </div>
+                        <p>Duration:{!duration}</p>
+                    </div>
+                    <div class="recieved">
+                        <h1><strong>FEE RECEIPT</strong></h1>
+                    </div>
+                    <div class="duration">
+                        <p>Examination Fee:{!examinationFee}</p>
+                        
+                        
+                    </div>
+                    <div class="paidby">
+                        <p>Due Date:{!dueDate}</p>
+                        <div class="pickList">
+                            <apex:outputPanel layout="block">
+                                <p style="display: inline;">Fee Type:{!feeType}</p>
+                            </apex:outputPanel>
+                        </div>
+                    </div>
+                    <div class="studnt">
+                        <p>Student:{!studentId}</p>
+                    </div>
+                    <div class="DueAmount">
+                        <div class="label-text">Due Amount:{!dueAmount}
+                        </div>
+                    </div>
+                    <div class="last-heading1">
+                        <div class="label-text">Paid Amount:{!paidAmount}
+                        </div>
+                    </div>
+                    <div class="payment-status">
+                        <apex:outputPanel layout="block">
+                            <p style="display: inline;">Payment Status:{!paymentStatus}</p>
+                        </apex:outputPanel>
+                    </div>
+                </div>
+            </apex:form> 
+        </body>
+    </html>
+</apex:page>

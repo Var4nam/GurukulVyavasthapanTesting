@@ -1,0 +1,332 @@
+<template>
+	<!-- AssignClass Datatable -->
+	<template if:true={recordData}>
+		<template if:true={showAssignClass}>
+			<tr class="dataTableRow">
+				<td role="gridcell">
+					<div if:true={classObj} class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<div if:true={isClassVisibles}>
+							<a onclick={handelRedirect} data-name="Class__c"
+								name={classObj.Id}><strong>{classObj.Name}</strong> </a>
+							<lightning-icon icon-name="utility:edit" data-name="Class__c" size="x-small"
+								onclick={handelEvent} style="margin-left: 20%;"></lightning-icon>
+						</div>
+						<div if:true={isClassLookup} class="lookup-design" style="margin:2%;width: 90%;">
+							<lightning-record-edit-form record-id={recordData.Id} object-api-name="Assign_Classes__c">
+								<lightning-output-field field-name="Class__c" data-name="Class__c" variant="label-hidden"
+									onchange={handleMultiYear} value={classObj.Id}> </lightning-output-field>
+							</lightning-record-edit-form>
+						</div>
+					</div>
+				</td>
+				<td role="gridcell">
+					<div if:true={subObj} class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<div if:true={isSubVisibles}>
+							<a onclick={handelRedirect} data-name="Subject__c"
+								name={subObj.Id}><strong>{subObj.Name}</strong> </a>
+							<lightning-icon icon-name="utility:edit" data-name="Subject__c" size="x-small"
+								onclick={handelEvent} style="margin-left: 20%;"></lightning-icon>
+						</div>
+						<div if:true={isSubLookup} class="lookup-design" style="margin:2%;width: 90%;">
+							<lightning-record-edit-form record-id={recordData.Id} object-api-name="Assign_Classes__c">
+								<lightning-output-field field-name="Subject__c" data-name="Subject__c"
+									variant="label-hidden" onchange={handleMultiYear} value={subObj.Id}>
+								</lightning-output-field>
+							</lightning-record-edit-form>
+						</div>
+					</div>
+				</td>
+				<td role="gridcell">
+					<div if:true={teacherObj} class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<div if:true={isTeacherVisibles}>
+							<a onclick={handelRedirect} data-name="Teacher__c"
+								name={teacherObj.Id}><strong>{teacherObj.Name}</strong> </a>
+							<lightning-icon icon-name="utility:edit" data-name="Teacher__c" size="x-small"
+								onclick={handelEvent} style="margin-left: 20%;"></lightning-icon>
+						</div>
+						<div if:true={isTeacherLookup} class="lookup-design" style="margin:2%;width: 90%;">
+							<lightning-record-edit-form record-id={recordData.Id} object-api-name="Assign_Classes__c">
+								<lightning-output-field field-name="Teacher__c" data-name="Teacher__c"
+									variant="label-hidden" onchange={handleMultiYear} value={teacherObj.Id}>
+								</lightning-output-field>
+							</lightning-record-edit-form>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</template>
+
+		<!-- AllTeacher Datatable -->
+		<template if:true={showAllTeacher}>
+			<tr class="dataTableRow">
+				<td role="gridcell">
+					<div class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<strong>{recordData.Enrollment_Number__c}</strong>
+					</div>
+				</td>
+				<td role="gridcell">
+					<div class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<strong>{recordData.First_Name__c}</strong>
+					</div>
+				</td>
+				<td role="gridcell">
+					<div class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<strong>{recordData.Specialization__c}</strong>
+					</div>
+				</td>
+				<td role="gridcell">
+					<div class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<strong>{recordData.Contact_Information__c}</strong>
+					</div>
+				</td>
+				<td role="gridcell">
+					<div if:true={schoolObj} class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<div if:true={isSchoolVisibles}>
+							<a onclick={handelRedirect} data-name="School__c"
+								name={schoolObj.Id}><strong>{schoolObj.Name}</strong> </a>
+							<lightning-icon icon-name="utility:edit" data-name="School__c" size="x-small"
+								onclick={handelEvent} style="margin-left: 20%;"></lightning-icon>
+						</div>
+						<div if:true={isSchoolLookup} class="lookup-design" style="margin:2%;width: 90%;">
+							<lightning-record-edit-form record-id={recordData.Id} object-api-name="Teacher__c">
+								<lightning-output-field field-name="School__c" data-name="School__c"
+									variant="label-hidden" onchange={handleMultiYear} value={schoolObj.Id}>
+								</lightning-output-field>
+							</lightning-record-edit-form>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</template>
+
+		<!-- AllStudent Datatable -->
+		<template if:true={showAllStudent}>
+			<tr class="dataTableRow">
+				<td role="gridcell">
+					<div class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<strong>{recordData.Enrollment_Number__c}</strong>
+					</div>
+				</td>
+				<td role="gridcell">
+					<div class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<strong>{recordData.Name}</strong>
+					</div>
+				</td>
+				<td role="gridcell">
+					<div class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<strong>{recordData.Father_Name__c}</strong>
+					</div>
+				</td>
+				<td role="gridcell">
+					<div class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<strong>{recordData.Mother_Name__c}</strong>
+					</div>
+				</td>
+				<td role="gridcell">
+					<div class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<strong>{recordData.Roll_Number__c}</strong>
+					</div>
+				</td>
+				<td role="gridcell">
+					<div if:true={classObj} class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<div if:true={isClassVisibles}>
+							<a onclick={handelRedirect} data-name="Class__c"
+								name={classObj.Id}><strong>{classObj.Name}</strong> </a>
+							<lightning-icon icon-name="utility:edit" data-name="Class__c" size="x-small"
+								onclick={handelEvent} style="margin-left: 20%;"></lightning-icon>
+						</div>
+						<div if:true={isClassLookup} class="lookup-design" style="margin:2%;width: 90%;">
+							<lightning-record-edit-form record-id={recordData.Id} object-api-name="Student__c">
+								<lightning-input-field field-name="Class__c" data-name="Class__c"
+									variant="label-hidden" onchange={handleMultiYear} value={classObj.Id}>
+								</lightning-input-field>
+							</lightning-record-edit-form>
+						</div>
+					</div>
+				</td>
+				<td role="gridcell">
+					<div if:true={schoolObj} class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<div if:true={isSchoolVisibles}>
+							<a onclick={handelRedirect} data-name="School__c"
+								name={schoolObj.Id}><strong>{schoolObj.Name}</strong> </a>
+							<lightning-icon icon-name="utility:edit" data-name="School__c" size="x-small"
+								onclick={handelEvent} style="margin-left: 20%;"></lightning-icon>
+						</div>
+						<div if:true={isSchoolLookup} class="lookup-design" style="margin:2%;width: 90%;">
+							<lightning-record-edit-form record-id={recordData.Id} object-api-name="Student__c">
+								<lightning-output-field field-name="School__c" data-name="School__c"
+									variant="label-hidden" onchange={handleMultiYear} value={schoolObj.Id}>
+								</lightning-output-field>
+							</lightning-record-edit-form>
+						</div>
+					</div>
+				</td>
+				<td role="gridcell">
+					<div if:true={resultObj} class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<div if:true={isResultVisibles}>
+							<a onclick={handelRedirect} data-name="Result__c"
+								name={resultObj.Id}><strong>{resultObj.Name}</strong> </a>
+							<lightning-icon icon-name="utility:edit" data-name="Result__c" size="x-small"
+								onclick={handelEvent} style="margin-left: 20%;"></lightning-icon>
+						</div>
+						<div if:true={isResultLookup} class="lookup-design" style="margin:2%;width: 90%;">
+							<lightning-record-edit-form record-id={recordData.Id} object-api-name="Student__c">
+								<lightning-input-field field-name="Result__c" data-name="Result__c"
+									variant="label-hidden" onchange={handleMultiYear} value={resultObj.Id}>
+								</lightning-input-field>
+							</lightning-record-edit-form>
+						</div>
+					</div>
+				</td>
+				
+			</tr>
+		</template>
+
+		<!-- AllStaff Datatable -->
+		<template if:true={showAllStaff}>
+			<tr class="dataTableRow">
+				<td role="gridcell">
+					<div class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<strong>{recordData.Name}</strong>
+					</div>
+				</td>
+				<td role="gridcell">
+					<div class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<strong>{recordData.Gender__c}</strong>
+					</div>
+				</td>
+				<td role="gridcell">
+					<div class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<strong>{recordData.Staff_Type__c}</strong>
+					</div>
+				</td>
+				<td role="gridcell">
+					<div class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<strong>{recordData.Phone__c}</strong>
+					</div>
+				</td>
+				
+				<!-- <td role="gridcell">
+					<div if:true={schoolObj} class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<div if:true={isSchoolVisibles}>
+							<a onclick={handelRedirect} data-name="School__c"
+								name={schoolObj.Id}><strong>{schoolObj.Name}</strong> </a>
+							<lightning-icon icon-name="utility:edit" data-name="School__c" size="x-small"
+								onclick={handelEvent} style="margin-left: 20%;"></lightning-icon>
+						</div>
+						<div if:true={isSchoolLookup} class="lookup-design" style="margin:2%;width: 90%;">
+							<lightning-record-edit-form record-id={recordData.Id} object-api-name="Teacher__c">
+								<lightning-output-field field-name="School__c" data-name="School__c"
+									variant="label-hidden" onchange={handleMultiYear} value={schoolObj.Id}>
+								</lightning-output-field>
+							</lightning-record-edit-form>
+						</div>
+					</div>
+				</td> -->
+			</tr>
+		</template>
+
+
+        <!-- AllAdmin Datatable -->
+		<template if:true={showAllAdmin}>
+			<tr class="dataTableRow">
+				<td role="gridcell">
+					<div class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<strong>{recordData.Name}</strong>
+					</div>
+				</td>
+				<!-- <td role="gridcell">
+					<div class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<strong>{recordData.Staff_Type__c}</strong>
+					</div>
+				</td>
+				<td role="gridcell">
+					<div class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<strong>{recordData.Phone__c}</strong>
+					</div>
+				</td> -->
+				<td role="gridcell">
+					<div class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<strong>{recordData.Gender__c}</strong>
+					</div>
+				</td>
+				<!-- <td role="gridcell">
+					<div if:true={schoolObj} class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<div if:true={isSchoolVisibles}>
+							<a onclick={handelRedirect} data-name="School__c"
+								name={schoolObj.Id}><strong>{schoolObj.Name}</strong> </a>
+							<lightning-icon icon-name="utility:edit" data-name="School__c" size="x-small"
+								onclick={handelEvent} style="margin-left: 20%;"></lightning-icon>
+						</div>
+						<div if:true={isSchoolLookup} class="lookup-design" style="margin:2%;width: 90%;">
+							<lightning-record-edit-form record-id={recordData.Id} object-api-name="Teacher__c">
+								<lightning-output-field field-name="School__c" data-name="School__c"
+									variant="label-hidden" onchange={handleMultiYear} value={schoolObj.Id}>
+								</lightning-output-field>
+							</lightning-record-edit-form>
+						</div>
+					</div>
+				</td> -->
+			</tr>
+		</template>
+
+		<!-- AllSubject Datatable -->
+		<template if:true={showAllSubject}>
+			<tr class="dataTableRow">
+				<!-- <td role="gridcell">
+					<div if:true={classObj} class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<div if:true={isClassVisibles}>
+							<a onclick={handelRedirect} data-name="Class__c"
+								name={classObj.Id}><strong>{classObj.Name}</strong> </a>
+							<lightning-icon icon-name="utility:edit" data-name="Class__c" size="x-small"
+								onclick={handelEvent} style="margin-left: 20%;"></lightning-icon>
+						</div>
+						<div if:true={isClassLookup} class="lookup-design" style="margin:2%;width: 90%;">
+							<lightning-record-edit-form record-id={recordData.Id} object-api-name="Subject__c">
+								<lightning-input-field field-name="Class__c" data-name="Class__c" variant="label-hidden"
+									onchange={handleMultiYear} value={classObj.Id}> </lightning-input-field>
+							</lightning-record-edit-form>
+						</div>
+					</div>
+				</td> -->
+				<td role="gridcell">
+					<div class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<strong>{recordData.Name}</strong>
+					</div>
+				</td>
+				<!-- <td role="gridcell">
+					<div class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<strong>{recordData.Subject_Code__c}</strong>
+					</div>
+				</td> -->
+				<!-- <td role="gridcell">
+					<div class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<strong>{recordData.Phone__c}</strong>
+					</div>
+				</td> --> -->
+				<!-- <td role="gridcell">
+					<div class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<strong>{recordData.Gender__c}</strong>
+					</div>
+				</td> -->
+				<!-- <td role="gridcell">
+					<div if:true={schoolObj} class="slds-truncate slds-align--absolute-center" style="overflow: initial;">
+						<div if:true={isSchoolVisibles}>
+							<a onclick={handelRedirect} data-name="School__c"
+								name={schoolObj.Id}><strong>{schoolObj.Name}</strong> </a>
+							<lightning-icon icon-name="utility:edit" data-name="School__c" size="x-small"
+								onclick={handelEvent} style="margin-left: 20%;"></lightning-icon>
+						</div>
+						<div if:true={isSchoolLookup} class="lookup-design" style="margin:2%;width: 90%;">
+							<lightning-record-edit-form record-id={recordData.Id} object-api-name="Teacher__c">
+								<lightning-output-field field-name="School__c" data-name="School__c"
+									variant="label-hidden" onchange={handleMultiYear} value={schoolObj.Id}>
+								</lightning-output-field>
+							</lightning-record-edit-form>
+						</div>
+					</div>
+				</td> -->
+			</tr>
+		</template>
+	</template>
+</template>

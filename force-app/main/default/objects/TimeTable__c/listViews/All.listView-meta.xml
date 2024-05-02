@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Day__c</columns>
+    <columns>Period_Time__c</columns>
+    <columns>Class__c</columns>
+    <columns>Teacher__c</columns>
+    <columns>Subject__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Class__c</field>
+        <operation>equals</operation>
+        <value>10th-A1</value>
+    </filters>
+    <label>All</label>
+</ListView>

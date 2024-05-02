@@ -1,0 +1,86 @@
+.navigationStyle{
+	background-color: white;
+}
+.text{
+	-webkit-text-fill-color: white;
+}
+
+.haddingStyle{
+	font-size: 20px;
+}
+.navigation{
+	width: 300px;
+}
+
+.slds-theme_shade {
+	padding-top: 3%;
+}
+
+.buttonStyle{
+	float: right;
+}
+
+ .fancy-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    background-color: #80d084;
+    border-radius: 20px; 
+    transform: scale(0.9); 
+  }
+  
+  .fancy-button:hover {
+    background-color: #45a049;
+    text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(44, 43, 43, 0.57);
+    transition: all 0.4s ease 0s;
+  }
+
+
+.Attendance_Box{
+	cursor: pointer;
+    font-size: 20px;
+    background-color: #ffff;
+}
+
+.Attendance_Box:hover {
+	text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	transition: all 0.4s ease 0s;
+    background-color: #9050e9;
+    color: #ffff;
+}
+
+.LeaveApply_Box{
+	cursor: pointer;
+    font-size: 20px;
+    background-color: #ffff;
+}
+
+.LeaveApply_Box:hover {
+	text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	transition: all 0.4s ease 0s;
+    background-color: #ff5d2d;
+    color: #ffff;
+}
+
+.Salary_Box{
+	cursor: pointer;
+    font-size: 20px;
+    background-color: #ffff;
+}
+
+.Salary_Box:hover {
+	text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	transition: all 0.4s ease 0s;
+    background-color: #107cad;
+    color: #ffff;
+}

@@ -1,0 +1,25 @@
+<template>
+	<lightning-layout-item size="3">
+		<lightning-card>
+			<p style="font-size: 26px; text-align: center; text-shadow: 0 0 BLACK;">Announcement</p>
+			<hr />
+			<div class="slds-var-p-around_medium">
+				<template for:each={announcementDashboards} for:item="announceItems">
+					<lightning-layout-item key={announceItems.id} size="3">
+						<div class="slds-var-p-around_medium">
+							<div class="slds-align_absolute-center">
+								<lightning-badge class="badges" style={announceItems.classes} label={announceItems.start}></lightning-badge>
+								<lightning-icon icon-name="utility:macros" size="small" alternative-text="Doc image">
+								</lightning-icon>
+								<lightning-badge style={announceItems.classes} class="badges" label={announceItems.end}></lightning-badge>
+							</div>
+							<div class="slds-border_bottom slds-text-heading_small">
+                                <p><lightning-icon icon-name="utility:record" size="xx-small" alternative-text="Doc image" ></lightning-icon>{announceItems.name}</p>
+							</div>
+						</div>
+					</lightning-layout-item>
+				</template>
+			</div>
+		</lightning-card>
+	</lightning-layout-item>
+</template>

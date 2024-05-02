@@ -1,0 +1,954 @@
+<template>
+	<lightning-card>
+		<div if:true={showLogoutButton} class="buttonStyle slds-m-right_medium">
+			<button class="fancy-button" onclick={handleLogoutClick} label="Log Out">Log Out</button>
+		</div>
+		<div>
+			<lightning-layout multiple-rows class="slds-theme_shade">
+				<lightning-layout-item size="12" padding="around-small" medium-device-size="3" large-device-size="2">
+				</lightning-layout-item>
+				<lightning-layout-item size="12" padding="around-small" medium-device-size="9" large-device-size="10">
+					<div class="adminName">
+						<span>{adminName}</span>
+					</div>
+				</lightning-layout-item>
+			</lightning-layout>
+			<lightning-layout multiple-rows class="slds-theme_shade">
+				<lightning-layout-item size="12" padding="around-small" medium-device-size="3" large-device-size="2">
+					<div class="header-column">
+						<div>
+							<img style="max-height: 200px; cursor: pointer; margin-top: -50px;" alt="Compnay logo" src={companyLogo} onclick={handleLogoClick}/>
+						</div>
+							<template if:true={showAdminDashboard}>
+								<lightning-vertical-navigation selected-item="reports_home">
+									<div class="slds-scrollable_y scrollbar style-3" style="height:22rem;width:100%"
+										tabindex="0">
+										<lightning-vertical-navigation-section>
+											<lightning-vertical-navigation-item-icon label="Home" name="reports_home"
+												icon-name="standard:home">
+											</lightning-vertical-navigation-item-icon>
+											<lightning-vertical-navigation-item-icon label="Teacher"
+												name="reports_teacher" icon-name="standard:avatar"
+												onclick={handleTeacherTab}>
+											</lightning-vertical-navigation-item-icon>
+											<lightning-vertical-navigation-item-icon label="Student"
+												name="reports_student" icon-name="standard:customers"
+												onclick={handleStudentTab}>
+											</lightning-vertical-navigation-item-icon>
+											<lightning-vertical-navigation-item-icon label="Subject"
+												name="reports_subject" icon-name="standard:pricebook"
+												onclick={handleSubjectTab}>
+											</lightning-vertical-navigation-item-icon>
+											<lightning-vertical-navigation-item-icon label="Time Table"
+												name="reports_Time-Table" icon-name="standard:apps"
+												onclick={handleTimeTableTab}>
+											</lightning-vertical-navigation-item-icon>
+											<lightning-vertical-navigation-item-icon label="Admission Cell"
+												name="reports_admission" icon-name="standard:customer_portal_users">
+											</lightning-vertical-navigation-item-icon>
+											<lightning-vertical-navigation-item-icon label="Announcement"
+												name="reports_announcement" icon-name="standard:coaching"
+												onclick={handleAnnouncementTab}>
+											</lightning-vertical-navigation-item-icon>
+											<lightning-vertical-navigation-item-icon label="Parent-Guardian"
+												name="reports_parent-guardian" icon-name="standard:individual"
+												onclick={handleParentTab}>
+											</lightning-vertical-navigation-item-icon>
+											<lightning-vertical-navigation-item-icon label="Class" name="reports_class"
+												icon-name="standard:panel_detail" onclick={handleClassTab}>
+											</lightning-vertical-navigation-item-icon>
+											<lightning-vertical-navigation-item-icon label="Event Calendar"
+												name="reports_event_calendar" icon-name="standard:event"
+												onclick={handleEventCalendarTab}>
+											</lightning-vertical-navigation-item-icon>
+											<lightning-vertical-navigation-item-icon label="Event Management"
+												name="reports_eventManagement" icon-name="standard:service_appointment"
+												onclick={handleEventManagementTab}>
+											</lightning-vertical-navigation-item-icon>
+											<lightning-vertical-navigation-item-icon label="Fee Management"
+												name="reports_feeManagement" icon-name="standard:expense_report_entry"
+												onclick={handleFeeManagementTab}>
+											</lightning-vertical-navigation-item-icon>
+											<lightning-vertical-navigation-item-icon label="Expense Management"
+												name="reports_expenceManagement" icon-name="standard:expense">
+											</lightning-vertical-navigation-item-icon>
+											<lightning-vertical-navigation-item-icon label="Grades Report"
+												name="reports_gradesReport" icon-name="standard:poll">
+											</lightning-vertical-navigation-item-icon>
+											<lightning-vertical-navigation-item-icon label="Result"
+												name="reports_result" icon-name="standard:metrics"
+												onclick={handleResultTab}>
+											</lightning-vertical-navigation-item-icon>
+											<lightning-vertical-navigation-item-icon label="Employee"
+												name="reports_employee" icon-name="standard:employee"
+												onclick={handleEmployeeTab}>
+											</lightning-vertical-navigation-item-icon>
+											<lightning-vertical-navigation-item-icon label="Attendance"
+												name="reports_attendance" icon-name="standard:campaign_members"
+												onclick={handleAttendanceTab}>
+											</lightning-vertical-navigation-item-icon>
+											<lightning-vertical-navigation-item-icon label="School Information"
+												name="reports_schoolInfo" icon-name="standard:account_info"
+												onclick={handleSchoolInformationTab}>
+											</lightning-vertical-navigation-item-icon>
+											<lightning-vertical-navigation-item-icon label="Class & Assigned Subject"
+												name="reports_classAndAssignedSubject" icon-name="standard:account_info"
+												onclick={handleClassAndAssignedSubjectTab}>
+											</lightning-vertical-navigation-item-icon>
+											<lightning-vertical-navigation-item-icon label="Paper"
+												name="reports_paper" icon-name="standard:knowledge"
+												onclick={handlePaperTab}>
+											</lightning-vertical-navigation-item-icon>
+										</lightning-vertical-navigation-section>
+									</div>
+								</lightning-vertical-navigation>
+							</template>
+							<template if:true={showTeacherDashboard}>
+								<lightning-vertical-navigation selected-item="reports_dashboard">
+									<lightning-vertical-navigation-section>
+										<lightning-vertical-navigation-item-icon label="Teacher Dashboard"
+											name="reports_dashboard" icon-name="standard:dashboard">
+										</lightning-vertical-navigation-item-icon>
+										<!-- <lightning-vertical-navigation-item-icon label="Salary" name="reports_salary"
+											icon-name="standard:partner_fund_request">
+										</lightning-vertical-navigation-item-icon> -->
+									</lightning-vertical-navigation-section>
+								</lightning-vertical-navigation>
+							</template>
+							<template if:true={showAnnouncementDashboard}>
+								<lightning-vertical-navigation selected-item="reports_dashboard">
+									<lightning-vertical-navigation-section>
+										<lightning-vertical-navigation-item-icon label="Announcement Dashboard"
+											name="reports_dashboard" icon-name="standard:dashboard">
+										</lightning-vertical-navigation-item-icon>
+									</lightning-vertical-navigation-section>
+								</lightning-vertical-navigation>
+							</template>
+							<template if:true={showParentDashboard}>
+								<lightning-vertical-navigation selected-item="reports_dashboard">
+									<lightning-vertical-navigation-section>
+										<lightning-vertical-navigation-item-icon label="Parent/Guardian Dashboard"
+											name="reports_dashboard" icon-name="standard:dashboard">
+										</lightning-vertical-navigation-item-icon>
+										<!-- <lightning-vertical-navigation-item-icon label="Attendance"
+											name="reports_attendance" icon-name="standard:campaign_members">
+										</lightning-vertical-navigation-item-icon> -->
+									</lightning-vertical-navigation-section>
+								</lightning-vertical-navigation>
+							</template>
+							<template if:true={showStudentDashboard}>
+								<lightning-vertical-navigation selected-item="reports_dashboard">
+									<lightning-vertical-navigation-section>
+										<lightning-vertical-navigation-item-icon label="Student Dashboard"
+											name="reports_dashboard" icon-name="standard:dashboard">
+										</lightning-vertical-navigation-item-icon>
+									</lightning-vertical-navigation-section>
+								</lightning-vertical-navigation>
+							</template>
+							<template if:true={showClassDashboard}>
+								<lightning-vertical-navigation selected-item="reports_dashboard">
+									<lightning-vertical-navigation-section>
+										<lightning-vertical-navigation-item-icon label="Class Dashboard"
+											name="reports_dashboard" icon-name="standard:dashboard">
+										</lightning-vertical-navigation-item-icon>
+										<!-- <lightning-vertical-navigation-item-icon label="Assigned Classes"
+											name="reports_assignedClasses" icon-name="standard:omni_supervisor">
+										</lightning-vertical-navigation-item-icon>
+										<lightning-vertical-navigation-item-icon label="Attendance"
+											name="reports_attendance" icon-name="standard:campaign_members">
+										</lightning-vertical-navigation-item-icon> -->
+									</lightning-vertical-navigation-section>
+								</lightning-vertical-navigation>
+							</template>
+							<template if:true={showEventCalendarDashboard}>
+								<lightning-vertical-navigation selected-item="reports_dashboard">
+									<lightning-vertical-navigation-section>
+										<lightning-vertical-navigation-item-icon label="Event Calendar Dashboard"
+											name="reports_dashboard" icon-name="standard:dashboard">
+										</lightning-vertical-navigation-item-icon>
+									</lightning-vertical-navigation-section>
+								</lightning-vertical-navigation>
+							</template>
+							<template if:true={showEventManagementDashboard}>
+								<lightning-vertical-navigation selected-item="reports_dashboard">
+									<lightning-vertical-navigation-section>
+										<lightning-vertical-navigation-item-icon label="Event Management Dashboard"
+											name="reports_dashboard" icon-name="standard:dashboard">
+										</lightning-vertical-navigation-item-icon>
+									</lightning-vertical-navigation-section>
+								</lightning-vertical-navigation>
+							</template>
+							<template if:true={showEmployeeDashboard}>
+								<lightning-vertical-navigation selected-item="reports_dashboard">
+									<lightning-vertical-navigation-section>
+										<lightning-vertical-navigation-item-icon label="Employee Dashboard"
+											name="reports_dashboard" icon-name="standard:dashboard">
+										</lightning-vertical-navigation-item-icon>
+									</lightning-vertical-navigation-section>
+								</lightning-vertical-navigation>
+							</template>
+							<template if:true={showFeeManagementDashboard}>
+								<lightning-vertical-navigation selected-item="reports_dashboard">
+									<lightning-vertical-navigation-section>
+										<lightning-vertical-navigation-item-icon label="Fee Management Dashboard"
+											name="feemanagement_dashboard" icon-name="standard:dashboard">
+										</lightning-vertical-navigation-item-icon>
+									</lightning-vertical-navigation-section>
+								</lightning-vertical-navigation>
+							</template>
+							<template if:true={showAttendanceDashboard}>
+								<lightning-vertical-navigation selected-item="reports_dashboard">
+									<lightning-vertical-navigation-section>
+										<lightning-vertical-navigation-item-icon label="Attendance Dashboard"
+											name="reports_dashboard" icon-name="standard:dashboard">
+										</lightning-vertical-navigation-item-icon>
+									</lightning-vertical-navigation-section>
+								</lightning-vertical-navigation>
+							</template>
+							<template if:true={showTimeTableDashboard}>
+								<lightning-vertical-navigation selected-item="reports_dashboard">
+									<lightning-vertical-navigation-section>
+										<lightning-vertical-navigation-item-icon label="Time Table Dashboard"
+											name="reports_dashboard" icon-name="standard:dashboard">
+										</lightning-vertical-navigation-item-icon>
+									</lightning-vertical-navigation-section>
+								</lightning-vertical-navigation>
+							</template>
+							<template if:true={showSubjectDashboard}>
+								<lightning-vertical-navigation selected-item="reports_dashboard">
+									<lightning-vertical-navigation-section>
+										<lightning-vertical-navigation-item-icon label="Subject Dashboard"
+											name="reports_dashboard" icon-name="standard:dashboard">
+										</lightning-vertical-navigation-item-icon>
+									</lightning-vertical-navigation-section>
+								</lightning-vertical-navigation>
+							</template>
+							<template if:true={showAdminTab}>
+								<lightning-vertical-navigation selected-item="reports_dashboard">
+									<lightning-vertical-navigation-section>
+										<lightning-vertical-navigation-item-icon label="Admin Dashboard"
+											name="reports_admin" icon-name="standard:dashboard">
+										</lightning-vertical-navigation-item-icon>
+									</lightning-vertical-navigation-section>
+								</lightning-vertical-navigation>
+							</template>
+							<template if:true={showPaperDashboard}>
+								<lightning-vertical-navigation selected-item="reports_dashboard">
+									<lightning-vertical-navigation-section>
+										<lightning-vertical-navigation-item-icon label="Paper Dashboard"
+											name="reports_paper" icon-name="standard:knowledge">
+										</lightning-vertical-navigation-item-icon>
+									</lightning-vertical-navigation-section>
+								</lightning-vertical-navigation>
+							</template>
+							<template if:true={showResultDashboard}>
+								<lightning-vertical-navigation selected-item="reports_dashboard">
+									<lightning-vertical-navigation-section>
+										<lightning-vertical-navigation-item-icon label="Result Dashboard"
+											name="reports_result" icon-name="standard:knowledge">
+										</lightning-vertical-navigation-item-icon>
+									</lightning-vertical-navigation-section>
+								</lightning-vertical-navigation>
+							</template>
+						</div>
+				</lightning-layout-item>
+				<template if:true={showAdminDashboard}>
+					<template if:true={showSchoolModal}>
+						<section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+							class="slds-modal slds-fade-in-open">
+							<div class="slds-modal__container">
+								<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+										<lightning-icon icon-name="utility:close" class='red-utility-icon' size="small" onclick={closeModal}></lightning-icon>
+										<span class="slds-assistive-text">Cancel and close</span>
+								</button>
+								<div class="slds-modal__header">
+									<h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">
+										School Information</h1>
+								</div>
+								<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+									<div class="modal">
+										<lightning-modal-body>
+											<div class="slds-box slds-theme_shade slds-theme_alert-texture">
+												<div class="slds-scrollable_y" style="height:22rem;width:100%"
+													tabindex="0">
+													<c-custom-data-table key-field="Id" data={schoolRecord}
+														columns={schoolColumns} onrowaction={handleRowAction}
+														how-row-number-column resize-column-disabled onsave={handleSave}
+														draft-values={saveDraftValues} sorted-by={sortBy}
+														sorted-direction={sortDirection} onsort={doSorting}>
+													</c-custom-data-table>
+												</div>
+											</div>
+										</lightning-modal-body>
+									</div>
+								</div>
+							</div>
+						</section>
+						<div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+					</template>
+					<template if:true={showClassAndAssignedSubject}>
+						<section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-02"
+							class="slds-modal slds-fade-in-open">
+							<div class="slds-modal__container">
+								<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+										<lightning-icon icon-name="utility:close" class='red-utility-icon' size="small" onclick={closeModal}></lightning-icon>
+										<span class="slds-assistive-text">Cancel and close</span>
+								</button>
+								<div class="slds-modal__header">
+									<h1 id="modal-heading-02" class="slds-modal__title slds-hyphenate">
+										Classes And Assigned Subjects</h1>
+								</div>
+								<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+									<div class="modal">
+										<lightning-modal-body>
+											<template if:false={waitForASection}>
+												<div class="exampleHolder">
+													<lightning-spinner alternative-text="Loading" size="x-small"></lightning-spinner>
+												</div>
+											</template>
+											<template if:true={waitForASection}>
+												<lightning-layout multiple-rows>
+													<lightning-layout-item size="12" padding="around-small"
+														medium-device-size="9" large-device-size="9">
+														<lightning-record-edit-form object-api-name="Assign_Classes__c">
+															<lightning-input-field field-name="Teacher__c"
+																variant="label-hidden" placeholder="Select teacher..."
+																onchange={handleClassChange}>
+															</lightning-input-field>
+														</lightning-record-edit-form>
+													</lightning-layout-item>
+													<lightning-layout-item size="12" padding="around-small"
+														medium-device-size="3" large-device-size="3">
+														<lightning-button variant="brand" label="Go"
+															onclick={handleGoClick}></lightning-button>
+													</lightning-layout-item>
+													<lightning-layout-item size="12" padding="around-small"
+														medium-device-size="12" large-device-size="12">
+														<template if:true={fetchedRecords}>
+															<div class="slds-box">
+																<table style="margin: 5px">
+																	<thead>
+																		<tr class="table_head">
+																			<th>S.N.</th>
+																			<th>Class</th>
+																			<th>Section</th>
+																			<th>Subject</th>
+																		</tr>
+																	</thead>
+																	<tbody>
+																		<template for:each={assignedClasses} for:item="ass"
+																			for:index="index">
+																			<tr key={ass.Id}>
+																				<td>{serialNumber}</td>
+																				<td if:true={ass.Class__r.Name}>{ass.Class__r.Name}</td>
+																				<td>{ass.Class__r.Section__c}</td>
+																				<td>{ass.Subject__r.Name}</td>
+																			</tr>
+																		</template>
+																	</tbody>
+																</table>
+															</div>
+														</template>
+													</lightning-layout-item>
+												</lightning-layout>
+											</template>
+										</lightning-modal-body>
+									</div>
+								</div>
+							</div>
+						</section>
+						<div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+					</template>
+					
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="3"
+						large-device-size="2">
+						<div class="slds-box Teachers_Box" onclick={handleTimeTableTab}>
+							<lightning-layout multiple-rows>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="3"
+									large-device-size="5">
+									<lightning-icon class="icon" icon-name="action:log_event"
+										alternative-text="Click to Call" size="large" title="large size">
+									</lightning-icon>
+								</lightning-layout-item>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="4"
+									large-device-size="6">
+									<div class="slds-text-align_right box_Lable">
+										Time Table<br>
+									</div>
+								</lightning-layout-item>
+							</lightning-layout>
+						</div>
+					</lightning-layout-item>
+
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="3"
+						large-device-size="2">
+						<div class="slds-box Parents_Box" onclick={handleTeacherTab}>
+							<lightning-layout multiple-rows>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="3"
+									large-device-size="5">
+									<lightning-icon class="icon" icon-name="action:new_person_account"
+										alternative-text="Click to Call" size="large" title="large size">
+									</lightning-icon>
+								</lightning-layout-item>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="4"
+									large-device-size="6">
+									<div class="slds-text-align_right box_Lable">
+										Teachers<br>
+										{totalTeachers}
+									</div>
+								</lightning-layout-item>
+							</lightning-layout>
+						</div>
+					</lightning-layout-item>
+
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="3"
+						large-device-size="2">
+						<div class="slds-box Students_Box" onclick={handleStudentTab}>
+							<lightning-layout multiple-rows>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="3"
+									large-device-size="5">
+									<lightning-icon class="icon" icon-name="action:new_group"
+										alternative-text="Click to Call" size="large" title="large size">
+									</lightning-icon>
+								</lightning-layout-item>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="4"
+									large-device-size="6">
+									<div class="slds-text-align_right box_Lable">
+										Students<br>
+										{totalStudents}
+									</div>
+								</lightning-layout-item>
+							</lightning-layout>
+						</div>
+					</lightning-layout-item>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="3"
+						large-device-size="2">
+						<div class="slds-box Employee_Box" onclick={handleEmployeeTab}>
+							<lightning-layout multiple-rows>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="3"
+									large-device-size="5">
+									<lightning-icon class="icon" icon-name="action:join_group"
+										alternative-text="Click to Call" size="large" title="large size">
+									</lightning-icon>
+								</lightning-layout-item>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="4"
+									large-device-size="6">
+									<div class="slds-text-align_right box_Lable">
+										Employee<br>
+										{totalEmployees}
+									</div>
+								</lightning-layout-item>
+							</lightning-layout>
+						</div>
+					</lightning-layout-item>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+						large-device-size="2">
+						<div class="slds-box Admin_Box" onclick={handleAdminTab}>
+							<lightning-layout multiple-rows>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="3"
+									large-device-size="5">
+									<lightning-icon class="icon" icon-name="action:user"
+										alternative-text="Click to Call" size="large" title="large size">
+									</lightning-icon>
+								</lightning-layout-item>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="4"
+									large-device-size="6">
+									<div class="slds-text-align_right box_Lable">
+										Admin<br>
+										{totalAdmins}
+									</div>
+								</lightning-layout-item>
+							</lightning-layout>
+						</div>
+					</lightning-layout-item>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="6"
+						large-device-size="2">
+					</lightning-layout-item>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="6" large-device-size="7"
+						class="calendar">
+						<!-- <c-event-calendar-component></c-event-calendar-component> -->
+						<c-calendar></c-calendar>
+					</lightning-layout-item>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="6" large-device-size="3"
+						class="calendar">
+						<c-announcement-dashboard></c-announcement-dashboard>
+					</lightning-layout-item>
+				</template>
+				<template if:true={showTeacherDashboard}>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="9"
+						large-device-size="10">
+						<template if:true={showTeacherPannel}>
+							<lightning-layout multiple-rows>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="4"
+									large-device-size="4">
+									<div class="slds-box Assigned_Class_Box" onclick={handleAssignClassClick}>
+										<lightning-layout multiple-rows>
+											<lightning-layout-item size="12" padding="around-small"
+												medium-device-size="3" large-device-size="4">
+												<lightning-icon class="icon" icon-name="action:new_person_account"
+													alternative-text="Click to Call" size="large" title="large size">
+												</lightning-icon>
+											</lightning-layout-item>
+											<lightning-layout-item size="12" padding="around-small"
+												medium-device-size="4" large-device-size="8">
+												<span class="slds-text-align_right box_Lable">Assigned Classes</span>
+											</lightning-layout-item>
+										</lightning-layout>
+									</div>
+								</lightning-layout-item>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="4"
+									large-device-size="4">
+									<div class="slds-box New_Registration_Box" onclick={handleAllTeacherClick}>
+										<lightning-layout multiple-rows>
+											<lightning-layout-item size="12" padding="around-small"
+												medium-device-size="3" large-device-size="4">
+												<lightning-icon class="icon" icon-name="action:record"
+													alternative-text="Click to Call" size="large" title="large size">
+												</lightning-icon>
+											</lightning-layout-item>
+											<lightning-layout-item size="12" padding="around-small"
+												medium-device-size="4" large-device-size="8">
+												<span class="slds-text-align_right box_Lable">All Teachers</span>
+											</lightning-layout-item>
+										</lightning-layout>
+									</div>
+								</lightning-layout-item>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="4"
+									large-device-size="4">
+									<div class="slds-box Attendance_Box" onclick={handleTeacherAttendanceClick}>
+										<lightning-layout multiple-rows>
+											<lightning-layout-item size="12" padding="around-small"
+												medium-device-size="3" large-device-size="4">
+												<lightning-icon class="icon" icon-name="action:join_group"
+													alternative-text="Click to Call" size="large" title="large size">
+												</lightning-icon>
+											</lightning-layout-item>
+											<lightning-layout-item size="12" padding="around-small"
+												medium-device-size="4" large-device-size="8">
+												<span class="slds-text-align_right box_Lable">Attendance</span>
+											</lightning-layout-item>
+										</lightning-layout>
+									</div>
+								</lightning-layout-item>
+							</lightning-layout>
+						</template>
+						<template if:true={showTeacherTable}>
+							<div class="back_button">
+								<lightning-button variant="brand-outline" label="Back" onclick={handleTeacherBack}>
+								</lightning-button>
+							</div>
+							<c-teacher-component></c-teacher-component>
+						</template>
+						<template if:true={showAssignClassTable}>
+							<div class="back_button">
+								<lightning-button variant="brand-outline" label="Back" onclick={handleTeacherBack}>
+								</lightning-button>
+							</div>
+							<c-assign-class-component></c-assign-class-component>
+						</template>
+						<template if:true={showTeacherAttendanceTable}>
+							<div class="back_button">
+								<lightning-button variant="brand-outline" label="Back" onclick={handleTeacherBack}>
+								</lightning-button>
+							</div>
+							<c-show-teacher-attendance-component></c-show-teacher-attendance-component>
+						</template>
+					</lightning-layout-item>
+				</template>
+				<template if:true={showAnnouncementDashboard}>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="9"
+						large-device-size="10">
+						<template if:true={showAnnouncementPannel}>
+							<lightning-layout multiple-rows>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="4"
+									large-device-size="4">
+									<div class="slds-box New_Registration_Box" onclick={handleAllAnnouncementClick}>
+										<lightning-layout multiple-rows>
+											<lightning-layout-item size="12" padding="around-small"
+												medium-device-size="3" large-device-size="4">
+												<lightning-icon class="icon" icon-name="action:record"
+													alternative-text="Click to Call" size="large" title="large size">
+												</lightning-icon>
+											</lightning-layout-item>
+											<lightning-layout-item size="12" padding="around-small"
+												medium-device-size="4" large-device-size="8">
+												<span class="slds-text-align_right box_Lable">All Announcement</span>
+											</lightning-layout-item>
+										</lightning-layout>
+									</div>
+								</lightning-layout-item>
+							</lightning-layout>
+						</template>
+						<template if:true={showAnnouncementTable}>
+							<div class="back_button">
+								<lightning-button variant="brand-outline" label="Back" onclick={handleAnnouncementBack}>
+								</lightning-button>
+							</div>
+							<c-announcement-u-i></c-announcement-u-i>
+						</template>
+					</lightning-layout-item>
+				</template>
+				<template if:true={showParentDashboard}>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="9"
+						large-device-size="10">
+						<template if:true={showParentPannel}>
+							<lightning-layout multiple-rows>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="4"
+									large-device-size="4">
+									<div class="slds-box New_Registration_Box" onclick={handleAllParentClick}>
+										<lightning-layout multiple-rows>
+											<lightning-layout-item size="12" padding="around-small"
+												medium-device-size="3" large-device-size="4">
+												<lightning-icon class="icon" icon-name="action:record"
+													alternative-text="Click to Call" size="large" title="large size">
+												</lightning-icon>
+											</lightning-layout-item>
+											<lightning-layout-item size="12" padding="around-small"
+												medium-device-size="4" large-device-size="8">
+												<span class="slds-text-align_right box_Lable">All Parents</span>
+											</lightning-layout-item>
+										</lightning-layout>
+									</div>
+								</lightning-layout-item>
+								<!-- <lightning-layout-item size="12" padding="around-small" medium-device-size="4"
+									large-device-size="4">
+									<div class="slds-box Attendance_Box">
+										<lightning-layout multiple-rows>
+											<lightning-layout-item size="12" padding="around-small"
+												medium-device-size="3" large-device-size="4">
+												<lightning-icon class="icon" icon-name="action:join_group"
+													alternative-text="Click to Call" size="large" title="large size">
+												</lightning-icon>
+											</lightning-layout-item>
+											<lightning-layout-item size="12" padding="around-small"
+												medium-device-size="4" large-device-size="8">
+												<span class="slds-text-align_right box_Lable">Attendance</span>
+											</lightning-layout-item>
+										</lightning-layout>
+									</div>
+								</lightning-layout-item> -->
+							</lightning-layout>
+						</template>
+						<template if:true={showParentTable}>
+							<div class="back_button">
+								<lightning-button variant="brand-outline" label="Back" onclick={handleParentBack}>
+								</lightning-button>
+							</div>
+							<c-parent-u-i></c-parent-u-i>
+						</template>
+					</lightning-layout-item>
+				</template>
+				<template if:true={showStudentDashboard}>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="9"
+						large-device-size="10">
+						<template if:true={showStudentPannel}>
+							<lightning-layout multiple-rows>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="4"
+									large-device-size="4">
+									<div class="slds-box New_Registration_Box" onclick={handleAllStudentClick}>
+										<lightning-layout multiple-rows>
+											<lightning-layout-item size="12" padding="around-small"
+												medium-device-size="3" large-device-size="4">
+												<lightning-icon class="icon" icon-name="action:record"
+													alternative-text="Click to Call" size="large" title="large size">
+												</lightning-icon>
+											</lightning-layout-item>
+											<lightning-layout-item size="12" padding="around-small"
+												medium-device-size="4" large-device-size="8">
+												<span class="slds-text-align_right box_Lable">All Students</span>
+											</lightning-layout-item>
+										</lightning-layout>
+									</div>
+								</lightning-layout-item>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="4"
+									large-device-size="4">
+									<div class="slds-box Attendance_Box" onclick={handleStudentAttendanceClick}>
+										<lightning-layout multiple-rows>
+											<lightning-layout-item size="12" padding="around-small"
+												medium-device-size="3" large-device-size="4">
+												<lightning-icon class="icon" icon-name="action:join_group"
+													alternative-text="Click to Call" size="large" title="large size">
+												</lightning-icon>
+											</lightning-layout-item>
+											<lightning-layout-item size="12" padding="around-small"
+												medium-device-size="4" large-device-size="8">
+												<span class="slds-text-align_right box_Lable">Attendance</span>
+											</lightning-layout-item>
+										</lightning-layout>
+									</div>
+								</lightning-layout-item>
+							</lightning-layout>
+						</template>
+						<template if:true={showStudentTable}>
+							<div class="back_button">
+								<lightning-button variant="brand-outline" label="Back" onclick={handleStudentBack}>
+								</lightning-button>
+							</div>
+							<c-student-u-i></c-student-u-i>
+						</template>
+						<template if:true={showStudentAttendanceTable}>
+							<div class="back_button">
+								<lightning-button variant="brand-outline" label="Back" onclick={handleStudentBack}>
+								</lightning-button>
+							</div>
+							<c-show-student-attendance-component></c-show-student-attendance-component>
+						</template>
+					</lightning-layout-item>
+				</template>
+				<template if:true={showClassDashboard}>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="9"
+						large-device-size="10">
+						<template if:true={showClassPannel}>
+							<lightning-layout multiple-rows>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="4"
+									large-device-size="4">
+									<div class="slds-box New_Registration_Box" onclick={handleAllClassesClick}>
+										<lightning-layout multiple-rows>
+											<lightning-layout-item size="12" padding="around-small"
+												medium-device-size="3" large-device-size="4">
+												<lightning-icon class="icon" icon-name="action:record"
+													alternative-text="Click to Call" size="large" title="large size">
+												</lightning-icon>
+											</lightning-layout-item>
+											<lightning-layout-item size="12" padding="around-small"
+												medium-device-size="4" large-device-size="8">
+												<span class="slds-text-align_right box_Lable">All Classes</span>
+											</lightning-layout-item>
+										</lightning-layout>
+									</div>
+								</lightning-layout-item>
+							</lightning-layout>
+						</template>
+						<template if:true={showClassTable}>
+							<div class="back_button">
+								<lightning-button variant="brand-outline" label="Back" onclick={handleClassBack}>
+								</lightning-button>
+							</div>
+							<c-class-u-i></c-class-u-i>
+						</template>
+					</lightning-layout-item>
+				</template>
+				<template if:true={showEventCalendarDashboard}>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="9"
+						large-device-size="10">
+						<!-- <c-event-calendar-component></c-event-calendar-component> -->
+						<c-calendar></c-calendar>
+					</lightning-layout-item>
+				</template>
+				<template if:true={showAdminTab}>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="9"
+						large-device-size="10">
+						<c-admin-component></c-admin-component>
+					</lightning-layout-item>
+				</template>
+				<template if:true={showPaperDashboard}>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="9"
+						large-device-size="10">
+						<template if:true={showPaperPannel}>
+							<lightning-layout multiple-rows>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="4"
+									large-device-size="4">
+									<div class="slds-box New_Registration_Box" onclick={handleAllPaperClick}>
+										<lightning-layout multiple-rows>
+											<lightning-layout-item size="12" padding="around-small"
+												medium-device-size="3" large-device-size="4">
+												<lightning-icon class="icon" icon-name="action:record"
+													alternative-text="Click to Call" size="large" title="large size">
+												</lightning-icon>
+											</lightning-layout-item>
+											<lightning-layout-item size="12" padding="around-small"
+												medium-device-size="4" large-device-size="8">
+												<span class="slds-text-align_right box_Lable">All Papers</span>
+											</lightning-layout-item>
+										</lightning-layout>
+									</div>
+								</lightning-layout-item>
+							</lightning-layout>
+						</template>
+						<template if:true={showPaperTable}>
+							<div class="back_button">
+								<lightning-button variant="brand-outline" label="Back" onclick={handlePaperBack}>
+								</lightning-button>
+							</div>
+							<c-paper-component></c-paper-component>
+						</template>
+					</lightning-layout-item>
+				</template>
+				<template if:true={showResultDashboard}>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="9"
+						large-device-size="10">
+						<template if:true={showResultPannel}>
+							<lightning-layout multiple-rows>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="4"
+									large-device-size="4">
+									<div class="slds-box New_Registration_Box" onclick={handleResultClick}>
+										<lightning-layout multiple-rows>
+											<lightning-layout-item size="12" padding="around-small"
+												medium-device-size="3" large-device-size="4">
+												<lightning-icon class="icon" icon-name="action:record"
+													alternative-text="Click to Call" size="large" title="large size">
+												</lightning-icon>
+											</lightning-layout-item>
+											<lightning-layout-item size="12" padding="around-small"
+												medium-device-size="4" large-device-size="8">
+												<span class="slds-text-align_right box_Lable">All Result</span>
+											</lightning-layout-item>
+										</lightning-layout>
+									</div>
+								</lightning-layout-item>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="4"
+									large-device-size="4">
+									<div class="slds-box Attendance_Box" onclick={handlePublishClick}>
+										<lightning-layout multiple-rows>
+											<lightning-layout-item size="12" padding="around-small"
+												medium-device-size="3" large-device-size="4">
+												<lightning-icon class="icon" icon-name="action:join_group"
+													alternative-text="Click to Call" size="large" title="large size">
+												</lightning-icon>
+											</lightning-layout-item>
+											<lightning-layout-item size="12" padding="around-small"
+												medium-device-size="4" large-device-size="8">
+												<span class="slds-text-align_right box_Lable">Publish Result</span>
+											</lightning-layout-item>
+										</lightning-layout>
+									</div>
+								</lightning-layout-item>
+							</lightning-layout>
+						</template>
+						<template if:true={showResultTable}>
+							<div class="back_button">
+								<lightning-button variant="brand-outline" label="Back" onclick={handleResultBack}>
+								</lightning-button>
+							</div>
+							<c-result-component></c-result-component>
+						</template>
+						<template if:true={showPublishTable}>
+							<div class="back_button">
+								<lightning-button variant="brand-outline" label="Back" onclick={handleResultBack}>
+								</lightning-button>
+							</div>
+							<c-publish-component></c-publish-component>
+						</template>
+					</lightning-layout-item>
+				</template>
+				<template if:true={showEventManagementDashboard}>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="9"
+						large-device-size="10">
+						<template if:true={showEventManagementPannel}>
+							<lightning-layout multiple-rows>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="4"
+									large-device-size="4">
+									<div class="slds-box New_Registration_Box" onclick={handleAllEventsClick}>
+										<lightning-layout multiple-rows>
+											<lightning-layout-item size="12" padding="around-small"
+												medium-device-size="3" large-device-size="4">
+												<lightning-icon class="icon" icon-name="action:record"
+													alternative-text="Click to Call" size="large" title="large size">
+												</lightning-icon>
+											</lightning-layout-item>
+											<lightning-layout-item size="12" padding="around-small"
+												medium-device-size="4" large-device-size="8">
+												<span class="slds-text-align_right box_Lable">All Events</span>
+											</lightning-layout-item>
+										</lightning-layout>
+									</div>
+								</lightning-layout-item>
+							</lightning-layout>
+						</template>
+						<template if:true={showEventManagementTable}>
+							<div class="back_button">
+								<lightning-button variant="brand-outline" label="Back"
+									onclick={handleEventManagementBack}></lightning-button>
+							</div>
+							<c-event-management-component></c-event-management-component>
+						</template>
+					</lightning-layout-item>
+				</template>
+				<template if:true={showEmployeeDashboard}>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="9"
+						large-device-size="10">
+						<template if:true={showEmployeePannel}>
+							<lightning-layout multiple-rows>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="4"
+									large-device-size="4">
+									<div class="slds-box New_Registration_Box" onclick={handleAllEmployeeClick}>
+										<lightning-layout multiple-rows>
+											<lightning-layout-item size="12" padding="around-small"
+												medium-device-size="3" large-device-size="4">
+												<lightning-icon class="icon" icon-name="action:record"
+													alternative-text="Click to Call" size="large" title="large size">
+												</lightning-icon>
+											</lightning-layout-item>
+											<lightning-layout-item size="12" padding="around-small"
+												medium-device-size="4" large-device-size="8">
+												<span class="slds-text-align_right box_Lable">All Employees</span>
+											</lightning-layout-item>
+										</lightning-layout>
+									</div>
+								</lightning-layout-item>
+							</lightning-layout>
+						</template>
+						<template if:true={showEmployeeTable}>
+							<div class="back_button">
+								<lightning-button variant="brand-outline" label="Back" onclick={handleEmployeeBack}>
+								</lightning-button>
+							</div>
+							<c-employee-component></c-employee-component>
+						</template>
+					</lightning-layout-item>
+				</template>
+				<template if:true={showFeeManagementDashboard}>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="9"
+						large-device-size="10">
+						<template if:true={showFeeManagementPannel}>
+							<lightning-layout multiple-rows>
+								<lightning-layout-item size="12" padding="around-small" medium-device-size="4"
+									large-device-size="4">
+									<div class="slds-box New_Registration_Box" onclick={handleAllFeeClick}>
+										<lightning-layout multiple-rows>
+											<lightning-layout-item size="12" padding="around-small"
+												medium-device-size="3" large-device-size="4">
+												<lightning-icon class="icon" icon-name="action:record"
+													alternative-text="Click to Call" size="large" title="large size">
+												</lightning-icon>
+											</lightning-layout-item>
+											<lightning-layout-item size="12" padding="around-small"
+												medium-device-size="4" large-device-size="8">
+												<span class="slds-text-align_right box_Lable">All Fee</span>
+											</lightning-layout-item>
+										</lightning-layout>
+									</div>
+								</lightning-layout-item>
+							</lightning-layout>
+						</template>
+						<template if:true={showFeeManagementTable}>
+							<div class="back_button">
+								<lightning-button variant="brand-outline" label="Back"
+									onclick={handleFeeManagementBack}></lightning-button>
+							</div>
+							<c-fee-management-dashboard></c-fee-management-dashboard>
+						</template>
+					</lightning-layout-item>
+				</template>
+				<template if:true={showAttendanceDashboard}>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="9"
+						large-device-size="10">
+						<c-attendance-component></c-attendance-component>
+					</lightning-layout-item>
+				</template>
+				<template if:true={showTimeTableDashboard}>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="9"
+						large-device-size="10">
+						<c-time-table-></c-time-table->
+					</lightning-layout-item>
+				</template>
+				<template if:true={showSubjectDashboard}>
+					<lightning-layout-item size="12" padding="around-small" medium-device-size="9"
+						large-device-size="10">
+						<c-subject-component></c-subject-component>
+					</lightning-layout-item>
+				</template>
+			</lightning-layout>
+		</div>
+	</lightning-card>
+</template>
